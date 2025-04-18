@@ -7,18 +7,15 @@ const client = new Client({
   database: process.env.POSTGRES_DBNAME,
   user: process.env.POSTGRES_USERNAME,
   password: process.env.POSTGRES_PASSWORD,
-  ssl: {
-    rejectUnauthorized: false
-  }
 })
 
 client.connect()
 
-export const query = async (text, values) => {
+export const query = async (text) => {
     try{
         const now = new Date()
         console.log("query to be executed:", text)
-        const res = await client.query(text, values)
+        const res = await client.query(text)
         const now2 = new Date()
         console.log(`it took ${now2-now}ms to run`)
         return res

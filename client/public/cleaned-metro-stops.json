@@ -1,0 +1,198 @@
+[
+  {
+    "gtfsId": "HSL:E625CE4",
+    "name": "Koivusaari",
+    "lat": 60.163578,
+    "lon": 24.853638,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:937EE51",
+    "name": "Lauttasaari",
+    "lat": 60.1594025,
+    "lon": 24.878535,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:7DA9CBA",
+    "name": "Ruoholahti",
+    "lat": 60.1631975,
+    "lon": 24.915565,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:969A487",
+    "name": "Kamppi",
+    "lat": 60.1688415,
+    "lon": 24.931199,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:D6BB306",
+    "name": "Rautatientori",
+    "lat": 60.1703835,
+    "lon": 24.939845499999997,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:E240290",
+    "name": "Helsingin yliopisto",
+    "lat": 60.1720175,
+    "lon": 24.9478825,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:CC2964E",
+    "name": "Hakaniemi",
+    "lat": 60.1804805,
+    "lon": 24.95017,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:A54720B",
+    "name": "Sörnäinen",
+    "lat": 60.1871275,
+    "lon": 24.9596955,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:095F022",
+    "name": "Kalasatama",
+    "lat": 60.187456,
+    "lon": 24.9771025,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:7ADFFF0",
+    "name": "Kulosaari",
+    "lat": 60.1888445,
+    "lon": 25.008186000000002,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:C713D5C",
+    "name": "Herttoniemi",
+    "lat": 60.1948135,
+    "lon": 25.0307435,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:03D4DEF",
+    "name": "Siilitie",
+    "lat": 60.2056835,
+    "lon": 25.044568499999997,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:B8B945D",
+    "name": "Itäkeskus",
+    "lat": 60.2100655,
+    "lon": 25.077742999999998,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:1D738E9",
+    "name": "Myllypuro",
+    "lat": 60.225005499999995,
+    "lon": 25.075754,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:C4BF020",
+    "name": "Kontula",
+    "lat": 60.2359665,
+    "lon": 25.0836855,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:555091F",
+    "name": "Mellunmäki",
+    "lat": 60.238906,
+    "lon": 25.1102005,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:D75704F",
+    "name": "Kivenlahti",
+    "lat": 60.1551905,
+    "lon": 24.637583,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:0310BA3",
+    "name": "Espoonlahti",
+    "lat": 60.150078,
+    "lon": 24.6533145,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:CD6C8D5",
+    "name": "Soukka",
+    "lat": 60.141535,
+    "lon": 24.669855,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:85594B9",
+    "name": "Kaitaa",
+    "lat": 60.149911,
+    "lon": 24.691477,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:8FFE7F7",
+    "name": "Finnoo",
+    "lat": 60.152559499999995,
+    "lon": 24.709263999999997,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:62E57B4",
+    "name": "Matinkylä",
+    "lat": 60.159797499999996,
+    "lon": 24.7394705,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:DDE81E9",
+    "name": "Niittykumpu",
+    "lat": 60.170469999999995,
+    "lon": 24.7633195,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:3931685",
+    "name": "Urheilupuisto",
+    "lat": 60.174561,
+    "lon": 24.7805665,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:5677793",
+    "name": "Aalto-yliopisto (M)",
+    "lat": 60.184435,
+    "lon": 24.823495,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:0AD7C5E",
+    "name": "Puotila",
+    "lat": 60.214707,
+    "lon": 25.093075499999998,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:10EA28F",
+    "name": "Vuosaari",
+    "lat": 60.20723,
+    "lon": 25.143072,
+    "vehicleMode": "SUBWAY"
+  },
+  {
+    "gtfsId": "HSL:60677DA",
+    "name": "Rastila",
+    "lat": 60.205518,
+    "lon": 25.1206665,
+    "vehicleMode": "SUBWAY"
+  }
+]

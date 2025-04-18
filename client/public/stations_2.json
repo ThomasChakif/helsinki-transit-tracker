@@ -1,0 +1,1731 @@
+[
+  {
+    "name": "Ruskeasuo",
+    "code": "H0142",
+    "lat": 60.20273083673471,
+    "lon": 24.89925693877551,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Tilkka",
+    "code": "H0140",
+    "lat": 60.19871520408161,
+    "lon": 24.90110306122447,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kuusitie",
+    "code": "H0138",
+    "lat": 60.195124925925946,
+    "lon": 24.902287203703732,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Jalavatie",
+    "code": "H0136",
+    "lat": 60.19341059259258,
+    "lon": 24.906740851851854,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Töölöntulli",
+    "code": "H0134",
+    "lat": 60.19159387878795,
+    "lon": 24.911605818181815,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Reijolankatu",
+    "code": "H0642",
+    "lat": 60.189755090909124,
+    "lon": 24.917354303030315,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Auroran sairaala",
+    "code": "H0640",
+    "lat": 60.19134739393933,
+    "lon": 24.92462248484848,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Eläintarha",
+    "code": "H0637",
+    "lat": 60.1926223939394,
+    "lon": 24.930060090909084,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Palkkatilanportti",
+    "code": "H0629",
+    "lat": 60.196833875,
+    "lon": 24.928768041666668,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Pasilan asema",
+    "code": "H0665",
+    "lat": 60.1982147027027,
+    "lon": 24.933842324324313,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Asemapäällikönkatu",
+    "code": "H0663",
+    "lat": 60.19875407894735,
+    "lon": 24.940129236842093,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Velodromi",
+    "code": "H0617",
+    "lat": 60.20076000000001,
+    "lon": 24.9439905,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Nylanderinpuisto",
+    "code": "H0853",
+    "lat": 60.200688,
+    "lon": 24.963938499999998,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Haukilahdenkatu",
+    "code": "H0855",
+    "lat": 60.198302999999996,
+    "lon": 24.9696785,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Sörnäistenkatu",
+    "code": "H0857",
+    "lat": 60.19539,
+    "lon": 24.974742,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Vanha talvitie",
+    "code": "H0859",
+    "lat": 60.192447,
+    "lon": 24.978405,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kalasatama (M)",
+    "code": "H0861",
+    "lat": 60.1869705,
+    "lon": 24.977156,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Polariksenkatu",
+    "code": "H0863",
+    "lat": 60.183808,
+    "lon": 24.980112499999997,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Sompasaari",
+    "code": "H0865",
+    "lat": 60.1807555,
+    "lon": 24.9787495,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Nihti",
+    "code": "H0871",
+    "lat": 60.178484,
+    "lon": 24.974293,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Maistraatintori",
+    "code": "H0606",
+    "lat": 60.19856,
+    "lon": 24.925323,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Esterinportti",
+    "code": "H0610",
+    "lat": 60.198414400000004,
+    "lon": 24.927985200000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Keilaniemi (M)",
+    "code": "E0777",
+    "lat": 60.177106,
+    "lon": 24.830748666666665,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Otaranta",
+    "code": "E0775",
+    "lat": 60.18078933333333,
+    "lon": 24.834266333333332,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Aalto-yliopisto (M)",
+    "code": "E0773",
+    "lat": 60.184327999999994,
+    "lon": 24.827496333333333,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Maari",
+    "code": "E0771",
+    "lat": 60.18735366666667,
+    "lon": 24.811791333333332,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Lahdenpohja",
+    "code": "E0769",
+    "lat": 60.19910333333333,
+    "lon": 24.809588333333334,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Laajalahti",
+    "code": "E0767",
+    "lat": 60.205391,
+    "lon": 24.808463333333332,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Alberganesplanadi",
+    "code": "E0763",
+    "lat": 60.214306,
+    "lon": 24.810773,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Leppävaaran asema",
+    "code": "E0761",
+    "lat": 60.217786,
+    "lon": 24.81378666666667,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Perkkaa",
+    "code": "E0759",
+    "lat": 60.217373,
+    "lon": 24.822896333333333,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ravitie",
+    "code": "E0755",
+    "lat": 60.21907266666667,
+    "lon": 24.84765833333333,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Talin siirt.puutarha",
+    "code": "H0753",
+    "lat": 60.21991966666667,
+    "lon": 24.86267433333333,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Takomotie",
+    "code": "H0751",
+    "lat": 60.217423,
+    "lon": 24.86945133333333,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kutomotie",
+    "code": "H0749",
+    "lat": 60.21542,
+    "lon": 24.875266333333332,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Vihdintie",
+    "code": "H0747",
+    "lat": 60.214665000000004,
+    "lon": 24.886663,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Huopalahden asema",
+    "code": "H0745",
+    "lat": 60.218548,
+    "lon": 24.892319,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ilkantie",
+    "code": "H0743",
+    "lat": 60.22492533333334,
+    "lon": 24.898146333333333,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Hämeenlinnanväylä",
+    "code": "H0741",
+    "lat": 60.227607,
+    "lon": 24.906747,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Pirkkola",
+    "code": "H0739",
+    "lat": 60.230716666666666,
+    "lon": 24.919892333333333,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Pirjontie",
+    "code": "H0737",
+    "lat": 60.23407633333333,
+    "lon": 24.929934333333332,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Maunula",
+    "code": "H0735",
+    "lat": 60.23153,
+    "lon": 24.934257000000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kustaankartano",
+    "code": "H0733",
+    "lat": 60.229988666666664,
+    "lon": 24.947014666666664,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Oulunkylän keskusta",
+    "code": "H0729",
+    "lat": 60.22934,
+    "lon": 24.963316666666667,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Oulunkylän asema",
+    "code": "H0727",
+    "lat": 60.22879433333333,
+    "lon": 24.96840233333333,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Veräjämäki",
+    "code": "H0725",
+    "lat": 60.231110666666666,
+    "lon": 24.979149000000003,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Viikinmäki",
+    "code": "H0723",
+    "lat": 60.229893000000004,
+    "lon": 24.998706,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Viikin tiedepuisto",
+    "code": "H0721",
+    "lat": 60.22718866666667,
+    "lon": 25.011878999999997,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Latokartano",
+    "code": "H0719",
+    "lat": 60.22359599999999,
+    "lon": 25.021803666666667,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Karhukallio",
+    "code": "H0717",
+    "lat": 60.21823866666666,
+    "lon": 25.048880333333333,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kauppamyllyntie",
+    "code": "H0715",
+    "lat": 60.214809,
+    "lon": 25.058657,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Roihupelto",
+    "code": "H0713",
+    "lat": 60.209391499999995,
+    "lon": 25.05898,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Itäkeskus (M)",
+    "code": "H0711",
+    "lat": 60.2096035,
+    "lon": 25.0745195,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Teininpuisto",
+    "code": "H0731",
+    "lat": 60.231987,
+    "lon": 24.956463,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Vermo",
+    "code": "E0757",
+    "lat": 60.216995,
+    "lon": 24.832293,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Helsinki",
+    "code": "H0064",
+    "lat": 60.17237402409636,
+    "lon": 24.940904698795183,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Pasila",
+    "code": "H0089",
+    "lat": 60.19953119277109,
+    "lon": 24.933110024096376,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Tikkurila",
+    "code": "V0611",
+    "lat": 60.29254209999999,
+    "lon": 25.04472984000001,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Käpylä",
+    "code": "H0072",
+    "lat": 60.220312151515145,
+    "lon": 24.946984090909087,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Oulunkylä",
+    "code": "H0073",
+    "lat": 60.228098181818154,
+    "lon": 24.966469545454533,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Pukinmäki",
+    "code": "H0074",
+    "lat": 60.24224534482758,
+    "lon": 24.993850724137932,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Malmi",
+    "code": "H0075",
+    "lat": 60.250949103448264,
+    "lon": 25.010759448275863,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Tapanila",
+    "code": "H0076",
+    "lat": 60.26246137931037,
+    "lon": 25.028567724137933,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Puistola",
+    "code": "H0077",
+    "lat": 60.27602172413792,
+    "lon": 25.036752379310357,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Hiekkaharju",
+    "code": "V0601",
+    "lat": 60.30326599999995,
+    "lon": 25.049019000000012,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Pohjois-Haaga",
+    "code": "H0082",
+    "lat": 60.23029299999999,
+    "lon": 24.883444,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Huopalahti",
+    "code": "H0079",
+    "lat": 60.21825983870967,
+    "lon": 24.893513000000006,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Ilmala",
+    "code": "H0078",
+    "lat": 60.20761850000001,
+    "lon": 24.921171500000007,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Leinelä",
+    "code": "V0701",
+    "lat": 60.32294560000001,
+    "lon": 25.037904799999993,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Lentoasema",
+    "code": "V0531",
+    "lat": 60.31577999999999,
+    "lon": 24.968649933333335,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Aviapolis",
+    "code": "V0526",
+    "lat": 60.30431746666669,
+    "lon": 24.956371333333337,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Kivistö",
+    "code": "V0236",
+    "lat": 60.31447276923076,
+    "lon": 24.84683146153846,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Vehkala",
+    "code": "V0256",
+    "lat": 60.29538784615385,
+    "lon": 24.84368692307692,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Vantaankoski",
+    "code": "V0172",
+    "lat": 60.28580499999999,
+    "lon": 24.848043,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Martinlaakso",
+    "code": "V0171",
+    "lat": 60.27792999999998,
+    "lon": 24.852826999999994,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Louhela",
+    "code": "V0152",
+    "lat": 60.270593999999996,
+    "lon": 24.853341,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Myyrmäki",
+    "code": "V0156",
+    "lat": 60.26191715384618,
+    "lon": 24.854839769230765,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Malminkartano",
+    "code": "H0084",
+    "lat": 60.249426307692325,
+    "lon": 24.861183538461542,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Kannelmäki",
+    "code": "H0083",
+    "lat": 60.23956976923078,
+    "lon": 24.8770473076923,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Leppävaara",
+    "code": "E1058",
+    "lat": 60.21943083333333,
+    "lon": 24.813152500000005,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Espoo",
+    "code": "E6038",
+    "lat": 60.2051335,
+    "lon": 24.656415,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Kirkkonummi",
+    "code": "Ki0101",
+    "lat": 60.11963000000002,
+    "lon": 24.438917600000003,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Siuntio",
+    "code": "So0106",
+    "lat": 60.14043699999999,
+    "lon": 24.219414,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Ruusulankatu",
+    "code": "H0128",
+    "lat": 60.18151380000002,
+    "lon": 24.925245599999997,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Töölöntori",
+    "code": "H0210",
+    "lat": 60.17960912765956,
+    "lon": 24.923616191489362,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Apollonkatu",
+    "code": "H0208",
+    "lat": 60.17628865957447,
+    "lon": 24.92219142553192,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Sammonkatu",
+    "code": "H0206",
+    "lat": 60.17311669230769,
+    "lon": 24.922794230769217,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Hanken",
+    "code": "H0204",
+    "lat": 60.17124546153851,
+    "lon": 24.925311999999995,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Luonnontiet.museo",
+    "code": "H0202",
+    "lat": 60.17112925000002,
+    "lon": 24.93114975,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Lasipalatsi",
+    "code": "H0102",
+    "lat": 60.17033994736843,
+    "lon": 24.937790105263158,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ylioppilastalo",
+    "code": "H0701",
+    "lat": 60.168089399999985,
+    "lon": 24.941507874999992,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kolmikulma",
+    "code": "H0703",
+    "lat": 60.165167000000004,
+    "lon": 24.943862,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Johanneksenkirkko",
+    "code": "H0705",
+    "lat": 60.163059999999994,
+    "lon": 24.945710000000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Tarkk´ampujankatu",
+    "code": "H0708",
+    "lat": 60.161023,
+    "lon": 24.947501,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Paavalinkirkko",
+    "code": "H0330",
+    "lat": 60.19810307142857,
+    "lon": 24.961487285714288,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Roineentie",
+    "code": "H0263",
+    "lat": 60.1931715,
+    "lon": 24.9540935,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Porvoonkatu",
+    "code": "H0261",
+    "lat": 60.1896475,
+    "lon": 24.948232499999996,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Urheilutalo",
+    "code": "H0259",
+    "lat": 60.186923131578986,
+    "lon": 24.94842085526314,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Linnanmäki (etelä)",
+    "code": "H0245",
+    "lat": 60.186041180327855,
+    "lon": 24.94145413114756,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kaupunginpuutarha",
+    "code": "H0243",
+    "lat": 60.184323606557435,
+    "lon": 24.931895409836088,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ooppera",
+    "code": "H0241",
+    "lat": 60.18207893442628,
+    "lon": 24.928271901639345,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Hesperian puisto",
+    "code": "H0105",
+    "lat": 60.17825149999999,
+    "lon": 24.929226500000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kansallismuseo",
+    "code": "H0103",
+    "lat": 60.17501150000001,
+    "lon": 24.93245200000001,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Karjalankatu",
+    "code": "H0636",
+    "lat": 60.19230623255814,
+    "lon": 24.93628446511628,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Linnanmäki (pohj.)",
+    "code": "H0634",
+    "lat": 60.19118439534883,
+    "lon": 24.940787093023257,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Alppila",
+    "code": "H0632",
+    "lat": 60.19071209302326,
+    "lon": 24.945489255813957,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Tahitinkatu",
+    "code": "H0345",
+    "lat": 60.152805,
+    "lon": 24.908978,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Saukonkatu",
+    "code": "H0833",
+    "lat": 60.156567,
+    "lon": 24.9112275,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Crusellinsilta",
+    "code": "H0293",
+    "lat": 60.159307999999996,
+    "lon": 24.909346499999998,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kaapelitehdas",
+    "code": "H0291",
+    "lat": 60.16268900000001,
+    "lon": 24.907899000000004,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ruoholahti (M)",
+    "code": "H0214",
+    "lat": 60.163365999999996,
+    "lon": 24.914481000000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Itämerenkatu",
+    "code": "H0216",
+    "lat": 60.16356850000001,
+    "lon": 24.920341999999998,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Maria",
+    "code": "H0217",
+    "lat": 60.167889499999994,
+    "lon": 24.921189,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Arkadiankatu",
+    "code": "H0221",
+    "lat": 60.171568,
+    "lon": 24.920276,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Helsinginkatu",
+    "code": "H0651",
+    "lat": 60.18706712,
+    "lon": 24.952806360000004,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Sörnäinen (M)",
+    "code": "H0314",
+    "lat": 60.1876032666667,
+    "lon": 24.96191380000001,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Lautatarhankatu",
+    "code": "H0316",
+    "lat": 60.190032083333335,
+    "lon": 24.964005208333337,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Hauhon puisto",
+    "code": "H0317",
+    "lat": 60.193208000000006,
+    "lon": 24.964577499999997,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Vallilan varikko",
+    "code": "H0319",
+    "lat": 60.1965815,
+    "lon": 24.962442999999997,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kumpulan kampus",
+    "code": "H0326",
+    "lat": 60.203041999999996,
+    "lon": 24.965840500000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kumtähdenkenttä",
+    "code": "H0325",
+    "lat": 60.204008,
+    "lon": 24.968949000000006,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Arabiankatu",
+    "code": "H0336",
+    "lat": 60.207029,
+    "lon": 24.974522500000003,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Arabianranta",
+    "code": "H0327",
+    "lat": 60.208016,
+    "lon": 24.978066000000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kanariankatu",
+    "code": "H0344",
+    "lat": 60.15319433333333,
+    "lon": 24.910040999999996,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Saunalahdentie",
+    "code": "H0127",
+    "lat": 60.194438,
+    "lon": 24.872577000000003,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Tiilimäki",
+    "code": "H0125",
+    "lat": 60.195682999999995,
+    "lon": 24.873409999999996,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Laajalahden aukio",
+    "code": "H0123",
+    "lat": 60.19794100000001,
+    "lon": 24.87736,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Munkkin. puistotie",
+    "code": "H0121",
+    "lat": 60.196762,
+    "lon": 24.883141000000006,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Paciuksenkaari",
+    "code": "H0119",
+    "lat": 60.194517499999996,
+    "lon": 24.891790999999998,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Meilahdentie",
+    "code": "H0117",
+    "lat": 60.1933015,
+    "lon": 24.894581499999997,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Meilahden sairaala",
+    "code": "H0116",
+    "lat": 60.191104249999995,
+    "lon": 24.906976750000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Aleksanterinkatu",
+    "code": "H0403",
+    "lat": 60.16891286206902,
+    "lon": 24.9464892413793,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Senaatintori",
+    "code": "H0405",
+    "lat": 60.169006137931035,
+    "lon": 24.950175344827592,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ritarihuone",
+    "code": "H0408",
+    "lat": 60.16916050000001,
+    "lon": 24.955893500000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Tove Janssonin p.",
+    "code": "H0410",
+    "lat": 60.167415000000005,
+    "lon": 24.962359999999997,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kauppiaankatu",
+    "code": "H0412",
+    "lat": 60.166768999999995,
+    "lon": 24.964830000000003,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Vyökatu",
+    "code": "H0414",
+    "lat": 60.16613,
+    "lon": 24.969071,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ulkoministeriö",
+    "code": "H0415",
+    "lat": 60.166757999999994,
+    "lon": 24.972191999999996,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Merisotilaantori",
+    "code": "H0417",
+    "lat": 60.1674535,
+    "lon": 24.974749,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Tapiola",
+    "code": "E0006",
+    "lat": 60.17496922222223,
+    "lon": 24.80348911111111,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Aalto-yliopisto (M)",
+    "code": "E0004",
+    "lat": 60.184471,
+    "lon": 24.82350388888889,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Keilaniemi",
+    "code": "E0002",
+    "lat": 60.17542055555556,
+    "lon": 24.82929055555556,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Koivusaari",
+    "code": "H0010",
+    "lat": 60.16358244444444,
+    "lon": 24.853641111111113,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Lauttasaari",
+    "code": "H0012",
+    "lat": 60.159407,
+    "lon": 24.878531111111112,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Ruoholahti",
+    "code": "H0014",
+    "lat": 60.16319966666668,
+    "lon": 24.915564777777778,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Kamppi",
+    "code": "H0016",
+    "lat": 60.168842777777776,
+    "lon": 24.931197222222224,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Rautatientori",
+    "code": "H0018",
+    "lat": 60.170384,
+    "lon": 24.939845444444437,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Helsingin yliopisto",
+    "code": "H0020",
+    "lat": 60.17201844444445,
+    "lon": 24.947878888888887,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Hakaniemi",
+    "code": "H0022",
+    "lat": 60.18048044444444,
+    "lon": 24.950168,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Sörnäinen",
+    "code": "H0024",
+    "lat": 60.187127888888895,
+    "lon": 24.959694111111112,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Kalasatama",
+    "code": "H0026",
+    "lat": 60.18746344444445,
+    "lon": 24.977106333333335,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Kulosaari",
+    "code": "H0028",
+    "lat": 60.188845666666666,
+    "lon": 25.00818544444445,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Herttoniemi",
+    "code": "H0030",
+    "lat": 60.19481477777778,
+    "lon": 25.030741222222222,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Siilitie",
+    "code": "H0032",
+    "lat": 60.20568433333332,
+    "lon": 25.044565777777777,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Itäkeskus",
+    "code": "H0035",
+    "lat": 60.21005858333333,
+    "lon": 25.077749833333332,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Myllypuro",
+    "code": "H0043",
+    "lat": 60.2250064,
+    "lon": 25.075758799999996,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Kontula",
+    "code": "H0045",
+    "lat": 60.235965199999995,
+    "lon": 25.083687200000004,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Mellunmäki",
+    "code": "H0047",
+    "lat": 60.238904000000005,
+    "lon": 25.110203,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Kivenlahti",
+    "code": "E0022",
+    "lat": 60.155203285714286,
+    "lon": 24.637594857142854,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Espoonlahti",
+    "code": "E0020",
+    "lat": 60.15007842857143,
+    "lon": 24.653318285714285,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Soukka",
+    "code": "E0018",
+    "lat": 60.141535857142856,
+    "lon": 24.66985557142857,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Kaitaa",
+    "code": "E0016",
+    "lat": 60.149921285714285,
+    "lon": 24.691466999999996,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Finnoo",
+    "code": "E0014",
+    "lat": 60.152585714285706,
+    "lon": 24.709245857142857,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Matinkylä",
+    "code": "E0012",
+    "lat": 60.15979885714285,
+    "lon": 24.739468428571428,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Niittykumpu",
+    "code": "E0010",
+    "lat": 60.170466142857144,
+    "lon": 24.763327142857147,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Urheilupuisto",
+    "code": "E0008",
+    "lat": 60.17455714285715,
+    "lon": 24.780566428571426,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Puotila",
+    "code": "H0037",
+    "lat": 60.21470233333334,
+    "lon": 25.093074333333334,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Vuosaari",
+    "code": "H0041",
+    "lat": 60.207225333333334,
+    "lon": 25.143073333333334,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Rastila",
+    "code": "H0039",
+    "lat": 60.205515,
+    "lon": 25.120664666666666,
+    "mode": "SUBWAY"
+  },
+  {
+    "name": "Korppaanmäki",
+    "code": "H0148",
+    "lat": 60.2079375,
+    "lon": 24.892499500000003,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Haapalahdenkatu",
+    "code": "H0145",
+    "lat": 60.205414,
+    "lon": 24.892529000000003,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kytösuontie",
+    "code": "H0143",
+    "lat": 60.204073,
+    "lon": 24.8957035,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Erottaja",
+    "code": "H0802",
+    "lat": 60.16615571428572,
+    "lon": 24.942292071428565,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Fredrikinkatu",
+    "code": "H0804",
+    "lat": 60.164720571428575,
+    "lon": 24.93812782142857,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Iso Roobertinkatu",
+    "code": "H0814",
+    "lat": 60.16278,
+    "lon": 24.939127333333335,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Viiskulma",
+    "code": "H0816",
+    "lat": 60.161056777777794,
+    "lon": 24.94158455555556,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Eiran sairaala",
+    "code": "H0443",
+    "lat": 60.15831411111112,
+    "lon": 24.94147688888888,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kapteeninkatu",
+    "code": "H0441",
+    "lat": 60.15821757142859,
+    "lon": 24.945271999999996,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Neitsytpolku",
+    "code": "H0439",
+    "lat": 60.15850342857142,
+    "lon": 24.94968342857143,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kaivopuisto",
+    "code": "H0437",
+    "lat": 60.15955373684211,
+    "lon": 24.95488878947368,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Olympiaterminaali",
+    "code": "H0434",
+    "lat": 60.16154176190476,
+    "lon": 24.95639466666667,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Eteläranta",
+    "code": "H0432",
+    "lat": 60.16514942857142,
+    "lon": 24.952593428571422,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kauppatori",
+    "code": "H0429",
+    "lat": 60.167453636363625,
+    "lon": 24.951837363636365,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Mikonkatu",
+    "code": "H0424",
+    "lat": 60.17016743478262,
+    "lon": 24.945349999999987,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Rautatieasema",
+    "code": "H0301",
+    "lat": 60.1703927878788,
+    "lon": 24.940857636363642,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Simonkatu",
+    "code": "H0232",
+    "lat": 60.168774161290315,
+    "lon": 24.935495258064524,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kamppi (M)",
+    "code": "H0234",
+    "lat": 60.16863582608696,
+    "lon": 24.93089978260869,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Sturenkatu",
+    "code": "H0655",
+    "lat": 60.190985952380956,
+    "lon": 24.948531666666675,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kotkankatu",
+    "code": "H0657",
+    "lat": 60.19297333333333,
+    "lon": 24.943733809523803,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Pasilan konepaja",
+    "code": "H0659",
+    "lat": 60.194341904761934,
+    "lon": 24.945131428571433,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Jämsänkatu",
+    "code": "H0661",
+    "lat": 60.19671299999999,
+    "lon": 24.942362761904754,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Messukeskus",
+    "code": "H0614",
+    "lat": 60.201409999999996,
+    "lon": 24.93678,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Fleminginkatu",
+    "code": "H0653",
+    "lat": 60.18945799999999,
+    "lon": 24.95228,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Vallilan kirjasto",
+    "code": "H0333",
+    "lat": 60.1921605,
+    "lon": 24.9611285,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Hattulantie",
+    "code": "H0265",
+    "lat": 60.194939999999995,
+    "lon": 24.956124999999993,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Rautalammintie",
+    "code": "H0267",
+    "lat": 60.196172499999996,
+    "lon": 24.953114500000005,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Mäkelänrinne",
+    "code": "H0269",
+    "lat": 60.19768699999998,
+    "lon": 24.949388499999998,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Koskelantie",
+    "code": "H0275",
+    "lat": 60.20825550000001,
+    "lon": 24.945489,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kimmontie",
+    "code": "H0279",
+    "lat": 60.210500499999995,
+    "lon": 24.944511000000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Käpylänaukio",
+    "code": "H0281",
+    "lat": 60.21300449999999,
+    "lon": 24.943449,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Metsolantie",
+    "code": "H0283",
+    "lat": 60.215165000000006,
+    "lon": 24.94883,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Pohjolanaukio",
+    "code": "H0285",
+    "lat": 60.21658,
+    "lon": 24.95448,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Telakkakatu",
+    "code": "H0446",
+    "lat": 60.158443,
+    "lon": 24.934147,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Perämiehenkatu",
+    "code": "H0444",
+    "lat": 60.157799999999995,
+    "lon": 24.9358655,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kilo",
+    "code": "E1330",
+    "lat": 60.2180045,
+    "lon": 24.783271000000003,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Kera",
+    "code": "E1832",
+    "lat": 60.21604100000001,
+    "lon": 24.75359,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Kauniainen",
+    "code": "Ka0101",
+    "lat": 60.21200299999999,
+    "lon": 24.732502000000007,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Koivuhovi",
+    "code": "E1606",
+    "lat": 60.20693749999999,
+    "lon": 24.7030075,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Tuomarila",
+    "code": "E6059",
+    "lat": 60.20606,
+    "lon": 24.6814735,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Kauklahti",
+    "code": "E5142",
+    "lat": 60.18946914285715,
+    "lon": 24.600490999999998,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Valimo",
+    "code": "H0080",
+    "lat": 60.22206933333333,
+    "lon": 24.876414222222223,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Pitäjänmäki",
+    "code": "H0081",
+    "lat": 60.22322155555556,
+    "lon": 24.860580222222218,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Mäkkylä",
+    "code": "E1172",
+    "lat": 60.221191000000005,
+    "lon": 24.842633444444445,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Masala",
+    "code": "Ki0103",
+    "lat": 60.1585069090909,
+    "lon": 24.53910618181818,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Jorvas",
+    "code": "Ki0104",
+    "lat": 60.13721122222221,
+    "lon": 24.511192666666666,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Tolsa",
+    "code": "Ki0105",
+    "lat": 60.118536,
+    "lon": 24.472725,
+    "mode": "RAIL"
+  },
+  {
+    "name": "Länsiterminaali 2",
+    "code": "H0239",
+    "lat": 60.151050500000004,
+    "lon": 24.9160285,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Bunkkerinaukio",
+    "code": "H0236",
+    "lat": 60.154166000000004,
+    "lon": 24.919388,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Huutokonttori",
+    "code": "H0297",
+    "lat": 60.15997566666666,
+    "lon": 24.921092666666663,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Hietalahti",
+    "code": "H0811",
+    "lat": 60.161442,
+    "lon": 24.924773,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Hietalahdentori",
+    "code": "H0808",
+    "lat": 60.16240999999999,
+    "lon": 24.931506,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Aleksant. teatteri",
+    "code": "H0805",
+    "lat": 60.163603,
+    "lon": 24.935071,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kalevankatu",
+    "code": "H0812",
+    "lat": 60.162816,
+    "lon": 24.92488,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kallion virastotalo",
+    "code": "H0254",
+    "lat": 60.180568090909084,
+    "lon": 24.949719818181823,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Haapaniemi",
+    "code": "H0309",
+    "lat": 60.18180600000001,
+    "lon": 24.955290500000004,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Lintulahti",
+    "code": "H0311",
+    "lat": 60.185099,
+    "lon": 24.960737,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Välimerenkatu",
+    "code": "H0288",
+    "lat": 60.1588425,
+    "lon": 24.915149,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Länsilinkki",
+    "code": "H0820",
+    "lat": 60.1627565,
+    "lon": 24.923112500000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ruoholahden villat",
+    "code": "H0822",
+    "lat": 60.16542500000001,
+    "lon": 24.926843500000004,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kampintori",
+    "code": "H0824",
+    "lat": 60.16786050000001,
+    "lon": 24.931356,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Eevanmäki",
+    "code": "H0625",
+    "lat": 60.201670500000006,
+    "lon": 24.9264355,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Uutiskatu",
+    "code": "H0627",
+    "lat": 60.2029,
+    "lon": 24.9206965,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ilmalantori",
+    "code": "H0622",
+    "lat": 60.207075,
+    "lon": 24.920107,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Karhupuisto",
+    "code": "H0256",
+    "lat": 60.18359100000001,
+    "lon": 24.952592,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kaarlenkatu",
+    "code": "H0257",
+    "lat": 60.186071,
+    "lon": 24.95152,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Hallituskatu",
+    "code": "H0451",
+    "lat": 60.170249999999996,
+    "lon": 24.9535155,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kansallisarkisto",
+    "code": "H0453",
+    "lat": 60.171995,
+    "lon": 24.953305,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Snellmaninkatu",
+    "code": "H0455",
+    "lat": 60.174058,
+    "lon": 24.952224,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kaisaniemenpuisto",
+    "code": "H0305",
+    "lat": 60.17343400000001,
+    "lon": 24.9493605,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kaisaniemenkatu",
+    "code": "H0303",
+    "lat": 60.171743000000006,
+    "lon": 24.947512500000002,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Katajanokan term.",
+    "code": "H0420",
+    "lat": 60.164266,
+    "lon": 24.969786,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Ensi linja",
+    "code": "H0230",
+    "lat": 60.183354,
+    "lon": 24.940617,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Castréninkatu",
+    "code": "H0227",
+    "lat": 60.182806,
+    "lon": 24.9452835,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Eiranranta",
+    "code": "H0826",
+    "lat": 60.15403899999999,
+    "lon": 24.930691,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Munkkisaari",
+    "code": "H0829",
+    "lat": 60.156608500000004,
+    "lon": 24.9342035,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Telakanpuistikko",
+    "code": "H0831",
+    "lat": 60.159415499999994,
+    "lon": 24.932305,
+    "mode": "TRAM"
+  },
+  {
+    "name": "Kuntatalo",
+    "code": "H0229",
+    "lat": 60.18445,
+    "lon": 24.94114,
+    "mode": "TRAM"
+  }
+]

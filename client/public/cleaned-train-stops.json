@@ -1,0 +1,291 @@
+[
+  {
+    "gtfsId": "HSL:12304",
+    "name": "Kerava",
+    "lat": 60.40463525,
+    "lon": 25.1063345,
+    "vehicleMode": "RAIL"
+  },
+
+
+  {
+    "gtfsId": "HSL:B5BC392",
+    "name": "Helsinki",
+    "lat": 60.172337,
+    "lon": 24.941033,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:D6C6A10",
+    "name": "Pasila",
+    "lat": 60.1995145,
+    "lon": 24.93295725,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:CEDAF81",
+    "name": "Tikkurila",
+    "lat": 60.2924972,
+    "lon": 25.044563599999996,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:E025B47",
+    "name": "Käpylä",
+    "lat": 60.2203135,
+    "lon": 24.946982,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:6E8AF55",
+    "name": "Oulunkylä",
+    "lat": 60.228099,
+    "lon": 24.966468,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:3C539E3",
+    "name": "Pukinmäki",
+    "lat": 60.242247,
+    "lon": 24.993847000000002,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:49A0A7A",
+    "name": "Malmi",
+    "lat": 60.250952,
+    "lon": 25.0107535,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:FDCD2F5",
+    "name": "Tapanila",
+    "lat": 60.262463499999996,
+    "lon": 25.028561,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:20164E6",
+    "name": "Puistola",
+    "lat": 60.276022499999996,
+    "lon": 25.036745500000002,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:2621272",
+    "name": "Hiekkaharju",
+    "lat": 60.303266,
+    "lon": 25.049019,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:DC96089",
+    "name": "Pohjois-Haaga",
+    "lat": 60.230293,
+    "lon": 24.883444,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:7F72522",
+    "name": "Huopalahti",
+    "lat": 60.2183015,
+    "lon": 24.893485,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:A3E3483",
+    "name": "Ilmala",
+    "lat": 60.207618499999995,
+    "lon": 24.9211715,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:79D7384",
+    "name": "Leinelä",
+    "lat": 60.3229435,
+    "lon": 25.0379035,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:9F13D00",
+    "name": "Lentoasema",
+    "lat": 60.3157815,
+    "lon": 24.968653,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:6DB6381",
+    "name": "Aviapolis",
+    "lat": 60.3043165,
+    "lon": 24.956373499999998,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:F94C369",
+    "name": "Kivist\u00f6",
+    "lat": 60.314486,
+    "lon": 24.846868,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:4D12765",
+    "name": "Vehkala",
+    "lat": 60.295387500000004,
+    "lon": 24.843688999999998,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:C039E1E",
+    "name": "Vantaankoski",
+    "lat": 60.285805,
+    "lon": 24.848043,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:0C256F4",
+    "name": "Martinlaakso",
+    "lat": 60.27793,
+    "lon": 24.852827,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:9F3575A",
+    "name": "Louhela",
+    "lat": 60.270594,
+    "lon": 24.853341,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:50FD03D",
+    "name": "Myyrmäki",
+    "lat": 60.261917499999996,
+    "lon": 24.8548405,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:FBCD13B",
+    "name": "Malminkartano",
+    "lat": 60.249428,
+    "lon": 24.8611905,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:336DBA7",
+    "name": "Kannelmäki",
+    "lat": 60.239572499999994,
+    "lon": 24.877050500000003,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:0C9483A",
+    "name": "Leppävaara",
+    "lat": 60.21942825,
+    "lon": 24.813173,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:33D23CB",
+    "name": "Espoo",
+    "lat": 60.2051335,
+    "lon": 24.656415,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:7E7D640",
+    "name": "Kirkkonummi",
+    "lat": 60.11963,
+    "lon": 24.438917,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:117C419",
+    "name": "Siuntio",
+    "lat": 60.140432000000004,
+    "lon": 24.219409,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:3A84AAC",
+    "name": "Kilo",
+    "lat": 60.2180045,
+    "lon": 24.783271,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:8F6ECC3",
+    "name": "Kera",
+    "lat": 60.216041,
+    "lon": 24.75359,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:3DF6B45",
+    "name": "Kauniainen",
+    "lat": 60.212003,
+    "lon": 24.732502,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:E54B3A0",
+    "name": "Koivuhovi",
+    "lat": 60.206937499999995,
+    "lon": 24.7030075,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:40D65D6",
+    "name": "Tuomarila",
+    "lat": 60.20606,
+    "lon": 24.6814735,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:22F5D57",
+    "name": "Kauklahti",
+    "lat": 60.1894475,
+    "lon": 24.600400999999998,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:CE06B49",
+    "name": "Valimo",
+    "lat": 60.222064,
+    "lon": 24.876415,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:3DB8751",
+    "name": "Pitäjänmäki",
+    "lat": 60.223218,
+    "lon": 24.8605785,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:CC6DED4",
+    "name": "Mäkkylä",
+    "lat": 60.2211925,
+    "lon": 24.8426305,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:A600396",
+    "name": "Masala",
+    "lat": 60.1585065,
+    "lon": 24.539107,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:1BF69E3",
+    "name": "Jorvas",
+    "lat": 60.137229500000004,
+    "lon": 24.511246,
+    "vehicleMode": "RAIL"
+  },
+  {
+    "gtfsId": "HSL:2FAB3F8",
+    "name": "Tolsa",
+    "lat": 60.118536,
+    "lon": 24.472725,
+    "vehicleMode": "RAIL"
+  }
+]

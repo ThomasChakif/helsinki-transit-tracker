@@ -2,31 +2,88 @@ import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
 
+import { query } from './db/postgres.js'
 
-import { query } from './db/postgres.js';
-
-// create the app
+//create the app
 const app = express()
-// it's nice to set the port number so it's always the same
-app.set('port', process.env.PORT || 3000);
-// set up some middleware to handle processing body requests
+
+//set the port
+app.set('port', 3000)
+
+//set up some middleware
+//set up some can read the body requests
 app.use(express.json())
-// set up some midlleware to handle cors
+//middleware to make requests happen from client/frontend
 app.use(cors())
 
-// base route
+//base route
 app.get('/', (req, res) => {
-    res.send("Welcome to the Job Application Tracker API!!!")
+    res.send('Welcome to the helsinki transit tracker')
 })
 
-
+//health check route
 app.get('/up', (req, res) => {
-  res.json({status: 'up'})
+    res.json({status: 'up'})
 })
 
+//route to grab all inserts from database
+app.get('/admin', (req, res) => {
+    try{
+        const qs = 'select * from reports'
+        query(qs).then(data => {res.send(data.rows)}) //send all data in the table
+    }catch(err){
+        res.send('error', err)
+    }
+})
+
+app.get('/adminVehicleResults', (req, res) => {
+  try{
+      const qs = "select round(avg(inspector_count), 2) as avg from reports where report_type = 'vehicle' limit 10"
+      query(qs).then(data => {res.send(data.rows)}) //send all data in the table
+  }catch(err){
+      res.send('error', err)
+  }
+})
+
+app.get('/adminStationResults', (req, res) => {
+  try{
+    const qs = "select round(avg(inspector_count), 2) as avg from reports where report_type = 'station' limit 10"
+    query(qs).then(data => {res.send(data.rows)}) //send all data in the table
+  }catch(err){
+      res.send('error', err)
+  }
+})
+
+app.get('/adminTopVehicle', (req, res) => {
+  try{
+    const qs = "SELECT vehicle_name, (SUM(inspector_count) / count(*)) as average_inspectors FROM reports WHERE report_type = 'vehicle' GROUP BY vehicle_name having count(*) >= 5 ORDER BY average_inspectors DESC LIMIT 1"
+    query(qs).then(data => {res.send(data.rows)}) //send all data in the table
+  }catch(err){
+      res.send('error', err)
+  }
+})
+
+app.get('/adminGetTodaysVotes', (req, res) => {
+  try{
+    const qs = "SELECT count(*) FROM reports WHERE DATE(created_at) = CURRENT_DATE"
+    query(qs).then(data => {res.send(data.rows)}) //send all data in the table
+  }catch(err){
+      res.send('error', err)
+  }
+})
+
+//route to delete a report from the database
+app.delete('/admin/:id', (req, res) => {
+  try {
+      const reportID = req.params.id
+      let qs = `delete from reports where report_id = ${reportID}`
+      query(qs).then(data => res.send(`${data.rowCount} row deleted`))
+  } catch (err) {
+      res.send('error', err)
+  }
+}) 
 
 app.listen(app.get('port'), () => {
-    console.log('App is running at http://localhost:%d in %s mode', app.get('port'), app.get('env'));
-    console.log('  Press CTRL-C to stop\n');
-  });
-  
+    console.log('App listening on http://localhost:3000')
+    console.log('Press Ctrl+C to stop')
+})

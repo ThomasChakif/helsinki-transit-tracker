@@ -1,0 +1,1010 @@
+[
+  {
+    "gtfsId": "HSL:98AD819",
+    "name": "Ruskeasuo",
+    "lat": 60.202732999999995,
+    "lon": 24.899258500000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:3C3052A",
+    "name": "Tilkka",
+    "lat": 60.1987235,
+    "lon": 24.9011,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:4E287B1",
+    "name": "Kuusitie",
+    "lat": 60.195071000000006,
+    "lon": 24.902268000000003,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:8BA1269",
+    "name": "Jalavatie",
+    "lat": 60.193415,
+    "lon": 24.9067325,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:7AAEBD4",
+    "name": "Töölöntulli",
+    "lat": 60.1914285,
+    "lon": 24.9114715,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:78B8452",
+    "name": "Reijolankatu",
+    "lat": 60.189755500000004,
+    "lon": 24.9173415,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:5090631",
+    "name": "Auroran sairaala",
+    "lat": 60.191342,
+    "lon": 24.924598500000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:DCCC88D",
+    "name": "Eläintarha",
+    "lat": 60.19264675,
+    "lon": 24.9298685,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:7C0986E",
+    "name": "Palkkatilanportti",
+    "lat": 60.196811499999995,
+    "lon": 24.9287735,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:B3B9E28",
+    "name": "Pasilan asema",
+    "lat": 60.19832566666667,
+    "lon": 24.933918000000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:7C5060E",
+    "name": "Asemapäällikönkatu",
+    "lat": 60.1987785,
+    "lon": 24.9400995,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:BAE4928",
+    "name": "Velodromi",
+    "lat": 60.20084975,
+    "lon": 24.944225,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:86E56A1",
+    "name": "Nylanderinpuisto",
+    "lat": 60.200688,
+    "lon": 24.963938499999998,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:30F1F23",
+    "name": "Haukilahdenkatu",
+    "lat": 60.198302999999996,
+    "lon": 24.9696785,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:C43B063",
+    "name": "Sörnäistenkatu",
+    "lat": 60.19539,
+    "lon": 24.974742,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:5791FC4",
+    "name": "Vanha talvitie",
+    "lat": 60.192447,
+    "lon": 24.978405000000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:07A7A33",
+    "name": "Kalasatama (M)",
+    "lat": 60.1869705,
+    "lon": 24.977156,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:AC8F2A1",
+    "name": "Polariksenkatu",
+    "lat": 60.183808,
+    "lon": 24.980112499999997,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:EF61A84",
+    "name": "Sompasaari",
+    "lat": 60.180755500000004,
+    "lon": 24.9787495,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:8BA104C",
+    "name": "Nihti",
+    "lat": 60.178484,
+    "lon": 24.974293,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:0E09619",
+    "name": "Maistraatintori",
+    "lat": 60.19856,
+    "lon": 24.925323,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:222254F",
+    "name": "Esterinportti",
+    "lat": 60.198387,
+    "lon": 24.9279795,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:D44EDAB",
+    "name": "Ruusulankatu",
+    "lat": 60.1815645,
+    "lon": 24.925207,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:2A8B605",
+    "name": "Töölöntori",
+    "lat": 60.179610499999995,
+    "lon": 24.923622,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:691BA8B",
+    "name": "Apollonkatu",
+    "lat": 60.1762915,
+    "lon": 24.9221965,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:996F759",
+    "name": "Sammonkatu",
+    "lat": 60.173139,
+    "lon": 24.922784,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:5E148B7",
+    "name": "Hanken",
+    "lat": 60.171249,
+    "lon": 24.925295499999997,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:0C28C0F",
+    "name": "Luonnontiet.museo",
+    "lat": 60.171135,
+    "lon": 24.931131999999998,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:B788E1E",
+    "name": "Lasipalatsi",
+    "lat": 60.170346,
+    "lon": 24.937787,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:D5DB5FB",
+    "name": "Ylioppilastalo",
+    "lat": 60.168394500000005,
+    "lon": 24.9418335,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:A8B7077",
+    "name": "Kolmikulma",
+    "lat": 60.165167,
+    "lon": 24.943862,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:F0F3923",
+    "name": "Johanneksenkirkko",
+    "lat": 60.16306,
+    "lon": 24.94571,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:CDBE17C",
+    "name": "Tarkk'ampujankatu",
+    "lat": 60.161023,
+    "lon": 24.947501,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:8EBDCD7",
+    "name": "Paavalinkirkko",
+    "lat": 60.198048666666665,
+    "lon": 24.961444666666665,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:5158436",
+    "name": "Roineentie",
+    "lat": 60.1931715,
+    "lon": 24.9540935,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:03C888E",
+    "name": "Porvoonkatu",
+    "lat": 60.1896475,
+    "lon": 24.948232500000003,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:C291BEE",
+    "name": "Urheilutalo",
+    "lat": 60.186854000000004,
+    "lon": 24.948646999999998,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:10421EE",
+    "name": "Linnanmäki (etelä)",
+    "lat": 60.186041,
+    "lon": 24.941451,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:0CE3F22",
+    "name": "Kaupunginpuutarha",
+    "lat": 60.184321499999996,
+    "lon": 24.931894,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:9842FAA",
+    "name": "Ooppera",
+    "lat": 60.1820775,
+    "lon": 24.928265,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:B444EAA",
+    "name": "Hesperian puisto",
+    "lat": 60.1782515,
+    "lon": 24.9292265,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:9AB8FF4",
+    "name": "Kansallismuseo",
+    "lat": 60.1750115,
+    "lon": 24.932452,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:A843366",
+    "name": "Karjalankatu",
+    "lat": 60.192308,
+    "lon": 24.936283500000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:7EED8AB",
+    "name": "Linnanmäki (pohj.)",
+    "lat": 60.1911855,
+    "lon": 24.940784,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:14D5A2B",
+    "name": "Alppila",
+    "lat": 60.190714,
+    "lon": 24.9454875,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:3EB9A57",
+    "name": "Tahitinkatu",
+    "lat": 60.152805,
+    "lon": 24.908978,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:323BFC1",
+    "name": "Saukonkatu",
+    "lat": 60.156566999999995,
+    "lon": 24.9112275,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:E36DFDA",
+    "name": "Crusellinsilta",
+    "lat": 60.159307999999996,
+    "lon": 24.9093465,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:195CE8B",
+    "name": "Kaapelitehdas",
+    "lat": 60.162689,
+    "lon": 24.907899,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:D3051D9",
+    "name": "Ruoholahti (M)",
+    "lat": 60.163365999999996,
+    "lon": 24.914481000000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:615F3A8",
+    "name": "Itämerenkatu",
+    "lat": 60.1635685,
+    "lon": 24.920341999999998,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:F3BD027",
+    "name": "Maria",
+    "lat": 60.1678895,
+    "lon": 24.921189,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:2150DA3",
+    "name": "Arkadiankatu",
+    "lat": 60.171568,
+    "lon": 24.920276,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:9986FCA",
+    "name": "Helsinginkatu",
+    "lat": 60.187166999999995,
+    "lon": 24.95296,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:56210A5",
+    "name": "Sörnäinen (M)",
+    "lat": 60.187332,
+    "lon": 24.961713333333336,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:C82BDD8",
+    "name": "Lautatarhankatu",
+    "lat": 60.1900475,
+    "lon": 24.96407025,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:5DA879C",
+    "name": "Hauhon puisto",
+    "lat": 60.193208,
+    "lon": 24.9645775,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:E96A08E",
+    "name": "Vallilan varikko",
+    "lat": 60.1965815,
+    "lon": 24.962443,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:D169314",
+    "name": "Kumpulan kampus",
+    "lat": 60.203041999999996,
+    "lon": 24.9658405,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:48FA713",
+    "name": "Kumtähdenkenttä",
+    "lat": 60.204008,
+    "lon": 24.968949000000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:AF60217",
+    "name": "Arabiankatu",
+    "lat": 60.207029,
+    "lon": 24.9745225,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:3DDC0BD",
+    "name": "Arabianranta",
+    "lat": 60.208016,
+    "lon": 24.978066,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:F435FA5",
+    "name": "Kanariankatu",
+    "lat": 60.1532635,
+    "lon": 24.9100325,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:DD240C1",
+    "name": "Saunalahdentie",
+    "lat": 60.194438,
+    "lon": 24.872577,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:C492432",
+    "name": "Tiilimäki",
+    "lat": 60.195683,
+    "lon": 24.87341,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:C8B3E7E",
+    "name": "Laajalahden aukio",
+    "lat": 60.197941,
+    "lon": 24.87736,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:20737D6",
+    "name": "Munkkin. puistotie",
+    "lat": 60.196762,
+    "lon": 24.883141000000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:7B42DB3",
+    "name": "Paciuksenkaari",
+    "lat": 60.1945175,
+    "lon": 24.891790999999998,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:4D2EECC",
+    "name": "Meilahdentie",
+    "lat": 60.193301500000004,
+    "lon": 24.8945815,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:901CC21",
+    "name": "Meilahden sairaala",
+    "lat": 60.191159,
+    "lon": 24.906462666666666,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:DFA88D1",
+    "name": "Aleksanterinkatu",
+    "lat": 60.168914,
+    "lon": 24.94648,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:A9783F5",
+    "name": "Senaatintori",
+    "lat": 60.1690075,
+    "lon": 24.9501665,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:30DC558",
+    "name": "Ritarihuone",
+    "lat": 60.169160500000004,
+    "lon": 24.9558935,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:15F9D6D",
+    "name": "Tove Janssonin p.",
+    "lat": 60.167415000000005,
+    "lon": 24.96236,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:0C572AF",
+    "name": "Kauppiaankatu",
+    "lat": 60.166769,
+    "lon": 24.96483,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:4D18FCA",
+    "name": "Vyökatu",
+    "lat": 60.166129999999995,
+    "lon": 24.969071,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:844C401",
+    "name": "Ulkoministeriö",
+    "lat": 60.166758,
+    "lon": 24.972192,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:18B6433",
+    "name": "Merisotilaantori",
+    "lat": 60.1674535,
+    "lon": 24.974749,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:F7C8486",
+    "name": "Korppaanmäki",
+    "lat": 60.2079375,
+    "lon": 24.8924995,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:9371090",
+    "name": "Haapalahdenkatu",
+    "lat": 60.205414000000005,
+    "lon": 24.892529,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:EEFDE75",
+    "name": "Kytösuontie",
+    "lat": 60.204073,
+    "lon": 24.8957035,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:70CE439",
+    "name": "Erottaja",
+    "lat": 60.16615,
+    "lon": 24.942285,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:496F995",
+    "name": "Fredrikinkatu",
+    "lat": 60.164726,
+    "lon": 24.9381555,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:4F0851C",
+    "name": "Iso Roobertinkatu",
+    "lat": 60.16278,
+    "lon": 24.9391395,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:73C5B73",
+    "name": "Viiskulma",
+    "lat": 60.1610785,
+    "lon": 24.941561,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:1EF998C",
+    "name": "Eiran sairaala",
+    "lat": 60.158241333333336,
+    "lon": 24.941080666666664,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:55DCACD",
+    "name": "Kapteeninkatu",
+    "lat": 60.158222,
+    "lon": 24.94525,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:457EE95",
+    "name": "Neitsytpolku",
+    "lat": 60.158506,
+    "lon": 24.9496625,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:523DDD4",
+    "name": "Kaivopuisto",
+    "lat": 60.159555,
+    "lon": 24.954883000000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:C053AE7",
+    "name": "Olympiaterminaali",
+    "lat": 60.161542499999996,
+    "lon": 24.9563985,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:9A1DCB5",
+    "name": "Eteläranta",
+    "lat": 60.165159,
+    "lon": 24.952602,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:6DFFBAE",
+    "name": "Kauppatori",
+    "lat": 60.16746666666668,
+    "lon": 24.951869,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:F0AA027",
+    "name": "Mikonkatu",
+    "lat": 60.17017,
+    "lon": 24.9453535,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:5B799A2",
+    "name": "Rautatieasema",
+    "lat": 60.170394,
+    "lon": 24.940853,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:1AD4DD7",
+    "name": "Simonkatu",
+    "lat": 60.168773,
+    "lon": 24.9354875,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:B083327",
+    "name": "Kamppi (M)",
+    "lat": 60.1686485,
+    "lon": 24.930888000000003,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:43B936F",
+    "name": "Sturenkatu",
+    "lat": 60.190983,
+    "lon": 24.948533,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:3D52A1D",
+    "name": "Kotkankatu",
+    "lat": 60.19297,
+    "lon": 24.94374,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:377E84C",
+    "name": "Pasilan konepaja",
+    "lat": 60.19434,
+    "lon": 24.945125,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:69448CD",
+    "name": "Jämsänkatu",
+    "lat": 60.1967115,
+    "lon": 24.942394,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:E5C5CED",
+    "name": "Messukeskus",
+    "lat": 60.20141,
+    "lon": 24.93678,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:22BC980",
+    "name": "Fleminginkatu",
+    "lat": 60.189364999999995,
+    "lon": 24.952375,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:B52BF34",
+    "name": "Vallilan kirjasto",
+    "lat": 60.1921605,
+    "lon": 24.9611285,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:1D884AD",
+    "name": "Hattulantie",
+    "lat": 60.19494,
+    "lon": 24.956125,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:9A12DD2",
+    "name": "Rautalammintie",
+    "lat": 60.1961725,
+    "lon": 24.953114499999998,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:257CA61",
+    "name": "Mäkelänrinne",
+    "lat": 60.197687,
+    "lon": 24.949388499999998,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:F36BA5D",
+    "name": "Koskelantie",
+    "lat": 60.2082555,
+    "lon": 24.945489,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:223E100",
+    "name": "Kimmontie",
+    "lat": 60.210500499999995,
+    "lon": 24.944511,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:009E5A1",
+    "name": "Käpylänaukio",
+    "lat": 60.2130045,
+    "lon": 24.943449,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:ADC02A1",
+    "name": "Metsolantie",
+    "lat": 60.215165,
+    "lon": 24.94883,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:309514A",
+    "name": "Pohjolanaukio",
+    "lat": 60.21658,
+    "lon": 24.95448,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:1B50FD4",
+    "name": "Telakkakatu",
+    "lat": 60.158443,
+    "lon": 24.934147,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:007773D",
+    "name": "Perämiehenkatu",
+    "lat": 60.1578,
+    "lon": 24.9358655,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:5832885",
+    "name": "Länsiterminaali 2",
+    "lat": 60.1510505,
+    "lon": 24.9160285,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:56F23E1",
+    "name": "Bunkkerinaukio",
+    "lat": 60.154166000000004,
+    "lon": 24.919388,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:9521177",
+    "name": "Huutokonttori",
+    "lat": 60.16003325,
+    "lon": 24.92095125,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:3B96AE9",
+    "name": "Hietalahti",
+    "lat": 60.161442,
+    "lon": 24.924773,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:683ADDF",
+    "name": "Hietalahdentori",
+    "lat": 60.162409999999994,
+    "lon": 24.931506,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:BD29D71",
+    "name": "Aleksant. teatteri",
+    "lat": 60.163603,
+    "lon": 24.935071,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:75ED7FB",
+    "name": "Kalevankatu",
+    "lat": 60.162816,
+    "lon": 24.92488,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:301C3B2",
+    "name": "Kallion virastotalo",
+    "lat": 60.180578999999994,
+    "lon": 24.9497265,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:E044B7E",
+    "name": "Haapaniemi",
+    "lat": 60.181806,
+    "lon": 24.9552905,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:97081E8",
+    "name": "Lintulahti",
+    "lat": 60.185099,
+    "lon": 24.960737,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:9217F1E",
+    "name": "Välimerenkatu",
+    "lat": 60.1588425,
+    "lon": 24.915149,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:3DFFEE4",
+    "name": "Länsilinkki",
+    "lat": 60.1627565,
+    "lon": 24.923112500000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:F388286",
+    "name": "Ruoholahden villat",
+    "lat": 60.165425,
+    "lon": 24.9268435,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:E8D2B66",
+    "name": "Kampintori",
+    "lat": 60.1678605,
+    "lon": 24.931356,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:26939AF",
+    "name": "Eevanmäki",
+    "lat": 60.201670500000006,
+    "lon": 24.9264355,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:CC216E7",
+    "name": "Uutiskatu",
+    "lat": 60.2029,
+    "lon": 24.9206965,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:5602D4D",
+    "name": "Ilmalantori",
+    "lat": 60.207075,
+    "lon": 24.920107,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:0D2FEFB",
+    "name": "Karhupuisto",
+    "lat": 60.183636500000006,
+    "lon": 24.952523,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:FCB8966",
+    "name": "Kaarlenkatu",
+    "lat": 60.186071,
+    "lon": 24.95152,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:80B37C1",
+    "name": "Hallituskatu",
+    "lat": 60.17025,
+    "lon": 24.9535155,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:9D02C74",
+    "name": "Kansallisarkisto",
+    "lat": 60.171994999999995,
+    "lon": 24.953305,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:6E598A1",
+    "name": "Snellmaninkatu",
+    "lat": 60.174058,
+    "lon": 24.952224,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:3CBB302",
+    "name": "Kaisaniemenpuisto",
+    "lat": 60.173434,
+    "lon": 24.9493605,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:569218E",
+    "name": "Kaisaniemenkatu",
+    "lat": 60.171743,
+    "lon": 24.947512500000002,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:661F1EF",
+    "name": "Katajanokan term.",
+    "lat": 60.164266,
+    "lon": 24.969786,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:1CBFB62",
+    "name": "Ensi linja",
+    "lat": 60.183354,
+    "lon": 24.940617,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:410D6BF",
+    "name": "Castr\u00e9ninkatu",
+    "lat": 60.182806,
+    "lon": 24.9452835,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:BB0B4A7",
+    "name": "Eiranranta",
+    "lat": 60.154039,
+    "lon": 24.930691,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:7B3F534",
+    "name": "Munkkisaari",
+    "lat": 60.1566085,
+    "lon": 24.9342035,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:CE80816",
+    "name": "Telakanpuistikko",
+    "lat": 60.159415499999994,
+    "lon": 24.932305,
+    "vehicleMode": "TRAM"
+  },
+  {
+    "gtfsId": "HSL:328A494",
+    "name": "Kuntatalo",
+    "lat": 60.18445,
+    "lon": 24.94114,
+    "vehicleMode": "TRAM"
+  }
+]
