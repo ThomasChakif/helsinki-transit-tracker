@@ -56,7 +56,7 @@ app.get('/adminStationResults', (req, res) => {
 
 app.get('/adminTopVehicle', (req, res) => {
   try{
-    const qs = "SELECT vehicle_name, (SUM(inspector_count) / count(*)) as average_inspectors FROM reports WHERE report_type = 'vehicle' GROUP BY vehicle_name having count(*) >= 5 ORDER BY average_inspectors DESC LIMIT 1"
+    const qs = "SELECT name, (SUM(inspector_count) / count(*)) as average_inspectors FROM reports WHERE report_type = 'vehicle' GROUP BY name having count(*) >= 5 ORDER BY average_inspectors DESC LIMIT 1"
     query(qs).then(data => {res.send(data.rows)}) //send all data in the table
   }catch(err){
       res.send('error', err)
@@ -69,6 +69,16 @@ app.get('/adminGetTodaysVotes', (req, res) => {
     query(qs).then(data => {res.send(data.rows)}) //send all data in the table
   }catch(err){
       res.send('error', err)
+  }
+})
+
+app.post('/newReport', (req, res) => {
+  try{
+    let body = req.body
+    const qs = `insert into reports (user_email, report_type, name, notes, inspector_count, created_at) values ('${body.email}', '${body.type}', '${body.name}', '${body.notes}', '${body.count}', '${body.time}')`
+    query(qs)
+  }catch(err){
+    res.send('error', err)
   }
 })
 

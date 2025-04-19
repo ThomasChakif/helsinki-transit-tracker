@@ -16,7 +16,7 @@ export default function DeleteModal({transactionID, transactionDeleteModalOpen, 
 
     const handleModalClose = () => setTransactionDeleteModalOpen(false)
 
-    //used to delete the specific application using its ID
+    //used to delete the specific report using its ID
     const deleteTransaction = async () => {
         await fetch(`http://localhost:3000/admin/${transactionID}`, {
             method: "DELETE",
@@ -34,7 +34,7 @@ export default function DeleteModal({transactionID, transactionDeleteModalOpen, 
         <Modal open={transactionDeleteModalOpen} onClose = {handleModalClose}>
             <Box sx={style}>
                 Are you sure you want to delete?
-                <Button onClick={deleteTransaction}>Delete Transaction</Button>
+                <Button onClick={deleteTransaction}>Delete Report</Button>
                 <Button onClick={handleModalClose}>Close</Button>
             </Box>
         </Modal>

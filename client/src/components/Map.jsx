@@ -6,14 +6,28 @@ import {
 } from '../api/transportApi';
 import TransportLayer from './TransportLayer';
 import Controls from './Controls';
+import {TextField, MenuItem, Box, Button, Stack} from '@mui/material'
 import { DEFAULT_POSITION, DEFAULT_ZOOM, TILE_LAYER, TRANSPORT_COLORS } from '../constants/mapConfig';
 import './Map.css';
+import dayjs from 'dayjs'
 
 // Firebase imports
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, setPersistence, browserSessionPersistence } from "firebase/auth";
 
-const Map = () => {
+const style = {
+  position: 'absolute',
+  left: '50%',
+  transform: 'translate(-50%)',
+  width: 400,
+  bgcolor: 'white',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  margin: '10px'
+};
+
+const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVotes, getTopVehicle}) => {
   // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyCnB2Dn0c3uJ78CeS9rOGLtVoFKkfIRqfM",
@@ -61,6 +75,42 @@ const Map = () => {
   const [user, setUser] = useState(null);
   const [showLoginButton, setShowLoginButton] = useState(true);
 
+  const [vehicleStationData, setVehicleStationData] = useState([]);
+  const [vehicleStationName, setVehicleStationName] = useState("");
+  const [reportType, setReportType] = useState("");
+  const [inspectorCount, setInspectorCount] = useState(0);
+  const [notes, setNotes] = useState("");
+
+  const addReport = async() => {
+    if(!vehicleStationName || !reportType) {
+      alert('Please fill out all required fields.');
+      return;
+    }
+    try{
+      const newReport = {
+        email: user.email,
+        type: reportType,
+        name: vehicleStationName,
+        notes: notes || 'No Notes',
+        count: inspectorCount,
+        time: dayjs().format('YYYY-MM-DD HH:mm:ss')
+      }
+  
+      await fetch('http://localhost:3000/newReport', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newReport)
+      })
+
+      await alertUser()
+    }catch(err){
+      console.error(err)
+    }
+    
+  }
+
   // Initialize Firebase
   useEffect(() => {
     const app = initializeApp(firebaseConfig);
@@ -84,12 +134,14 @@ const Map = () => {
   const handleGoogleSignIn = async () => {
     try {
       const auth = getAuth();
+      await setPersistence(auth, browserSessionPersistence);
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       
       // The signed-in user info
       const user = result.user;
       setUser(user);
+      console.log(getAuth()._persistenceManager.persistence.type);
       setShowLoginButton(false);
     } catch (error) {
       console.error("Error during sign-in:", error.message);
@@ -143,6 +195,13 @@ const Map = () => {
     
     loadData();
   }, []);
+
+  //get all vehicle and station names and types from json file
+  useEffect(() => {
+    fetch('../../vehicleAndStationData/vehicleStationData.json')
+    .then(res => res.json())
+    .then(data => setVehicleStationData(data.data))
+  })
 
   // Toggle handler
   const handleToggle = (layerId) => {
@@ -263,6 +322,42 @@ const Map = () => {
           />
         )}
       </MapContainer>
+
+        <Box sx = {style}>
+          <h3 className='newReportH3'>Make a new report</h3>
+          <Stack spacing={2}>
+            <TextField
+              style={{marginBottom: '20px', width: '400px'}}
+              select
+              label = 'Select a vehicle or station'
+              variant = 'outlined'
+              required
+              value = {vehicleStationName}
+              onChange = {(event) => {
+                //first set the name 
+                const selectedPlatform = vehicleStationData.find(platform => platform.name === event.target.value)
+                setVehicleStationName(event.target.value)
+                const rt = selectedPlatform?.type;
+                setReportType(rt)
+              }}
+            >
+              {vehicleStationData.map((vsData) => (
+                <MenuItem key={vsData.name} value={vsData.name}>
+                  {vsData.name}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField style={{marginBottom: '20px', width: '400px'}} required label="Number of inspectors" type="text" inputProps={{min: 0, step: 1, pattern: '[0-9]*',}} value={inspectorCount} onChange={event => {
+              const ic = event.target.value
+              if (/^\d*$/.test(ic)) { // regex to allow only whole numbers
+                setInspectorCount(ic)
+              }
+            }}
+            />
+            <TextField style={{marginBottom: '20px', width: '400px'}} label="Notes (optional)" onChange={event => setNotes(event.target.value)}/>
+          </Stack>
+          <Button onClick={addReport}>Submit report</Button>
+      </Box>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { MaterialReactTable } from 'material-react-table'
 import DeleteIcon from '@mui/icons-material/Delete'
 import AssessmentIcon from '@mui/icons-material/Assessment'
 import DeleteModal from './DeleteModal'
+import Map from './Map'
 import './Admin.css'
 
 function Admin() {
@@ -30,7 +31,7 @@ function Admin() {
         setSnackbarOpen(true)
       }
       const data = await resp.json()
-      setTopVehicleName(data[0]?.vehicle_name ?? 'N/A')
+      setTopVehicleName(data[0]?.name ?? 'N/A')
       setTopVehicleCount(data[0]?.average_inspectors ?? 'None')
     } catch (err) {
       console.error(err)
@@ -112,12 +113,8 @@ function Admin() {
       header: 'Station/Vehicle',
     },
     {
-      accessorKey: 'vehicle_name',
-      header: 'Vehicle name',
-    },
-    {
-      accessorKey: 'station_name',
-      header: 'Station name',
+      accessorKey: 'name',
+      header: 'Vehicle or Station name',
     },
     {
       accessorKey: 'inspector_count',

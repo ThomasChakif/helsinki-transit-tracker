@@ -1,0 +1,24 @@
+{
+    "data": [
+        {
+            "name": "Vehicle 1",
+            "type": "vehicle"
+        },
+        {
+            "name": "Vehicle 2",
+            "type": "vehicle"
+        },
+        {
+            "name": "Vehicle 3",
+            "type": "vehicle"
+        },
+        {
+            "name": "Station 1",
+            "type": "station"
+        },
+        {
+            "name": "Station 2",
+            "type": "station"
+        }
+    ]
+}
