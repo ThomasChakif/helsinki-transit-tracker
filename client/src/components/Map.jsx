@@ -24,7 +24,7 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  margin: '10px'
+  margin: '20px',
 };
 
 const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVotes, getTopVehicle}) => {
@@ -103,8 +103,7 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
         },
         body: JSON.stringify(newReport)
       })
-
-      await alertUser()
+      alert('Report successfully submitted!')
     }catch(err){
       console.error(err)
     }
@@ -323,7 +322,9 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
         )}
       </MapContainer>
 
-        <Box sx = {style}>
+        {/* only add in new report form if a user is signed in */}
+        {user && (
+          <Box sx = {style}>
           <h3 className='newReportH3'>Make a new report</h3>
           <Stack spacing={2}>
             <TextField
@@ -358,6 +359,8 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
           </Stack>
           <Button onClick={addReport}>Submit report</Button>
       </Box>
+        )}
+        
     </div>
   );
 };

@@ -76,7 +76,7 @@ app.post('/newReport', (req, res) => {
   try{
     let body = req.body
     const qs = `insert into reports (user_email, report_type, name, notes, inspector_count, created_at) values ('${body.email}', '${body.type}', '${body.name}', '${body.notes}', '${body.count}', '${body.time}')`
-    query(qs)
+    query(qs).then(data => {res.send(data.rows)})
   }catch(err){
     res.send('error', err)
   }
