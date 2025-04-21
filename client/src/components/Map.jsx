@@ -13,7 +13,7 @@ import dayjs from 'dayjs'
 
 // Firebase imports
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, setPersistence, browserSessionPersistence } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, setPersistence, browserSessionPersistence, signOut } from "firebase/auth";
 
 const style = {
   position: 'relative',
@@ -145,6 +145,7 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
     }
   }
 
+
   //update the color of the status based on the number of inspectors
   const getStatusColor = () => {
     const numValue = parseFloat(searchResults)
@@ -211,6 +212,23 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
       setShowLoginButton(false);
     } catch (error) {
       console.error("Error during sign-in:", error.message);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      const auth = getAuth();
+      await signOut(auth);
+      // Sign-out successful
+      setUser(null);
+      setShowLoginButton(true);
+      // Reset user-specific state if needed
+      setVehicleStationName("");
+      setNotes("");
+      setInspectorCount(0);
+    } catch (error) {
+      console.error("Error during sign-out:", error.message);
+      alert("Failed to sign out. Please try again.");
     }
   };
 
@@ -303,6 +321,7 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
         ) : (
           <div id="displayUserInfo" className="user-info">
             <p id="userName">Hi, {user?.displayName}</p>
+            <button id="sign-out-btn" onClick={handleSignOut}>Sign Out</button>
           </div>
         )}
       </div>
