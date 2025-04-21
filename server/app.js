@@ -72,13 +72,27 @@ app.get('/adminGetTodaysVotes', (req, res) => {
   }
 })
 
+//get 5 most recent votes made today for a specific station or vehicle
+app.post('/adminGetRecentVotes', (req, res) => {
+  try {
+    let body = req.body
+    let reqName = body.name
+    let todayDate = body.todayDate
+    let tomDate = body.tomDate
+    const qs = `SELECT ROUND(AVG(recent_votes.inspector_count), 2) as average  FROM (SELECT inspector_count FROM reports WHERE name LIKE '${reqName}' AND created_at >= '${todayDate}' AND created_at < '${tomDate}' ORDER BY created_at DESC LIMIT 5) AS recent_votes`
+    query(qs).then(data => {res.send(data.rows)})
+  }catch(err){
+    res.send('error', err)
+  }
+})
+
 app.post('/newReport', (req, res) => {
   try{
     let body = req.body
     const qs = `insert into reports (user_email, report_type, name, notes, inspector_count, created_at) values ('${body.email}', '${body.type}', '${body.name}', '${body.notes}', '${body.count}', '${body.time}')`
     query(qs).then(data => {res.send(data.rows)})
   }catch(err){
-    res.send('error', err)
+    res.send('error', err) 
   }
 })
 

@@ -6,7 +6,7 @@ import {
 } from '../api/transportApi';
 import TransportLayer from './TransportLayer';
 import Controls from './Controls';
-import {TextField, MenuItem, Box, Button, Stack} from '@mui/material'
+import {TextField, MenuItem, Box, Button, Stack, Grid} from '@mui/material'
 import { DEFAULT_POSITION, DEFAULT_ZOOM, TILE_LAYER, TRANSPORT_COLORS } from '../constants/mapConfig';
 import './Map.css';
 import dayjs from 'dayjs'
@@ -16,9 +16,17 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, setPersistence, browserSessionPersistence } from "firebase/auth";
 
 const style = {
-  position: 'absolute',
-  left: '50%',
-  transform: 'translate(-50%)',
+  position: 'relative',
+  width: 400,
+  bgcolor: 'white',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  margin: '20px',
+};
+
+const style2 = {
+  position: 'relative',
   width: 400,
   bgcolor: 'white',
   border: '2px solid #000',
@@ -77,9 +85,37 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
 
   const [vehicleStationData, setVehicleStationData] = useState([]);
   const [vehicleStationName, setVehicleStationName] = useState("");
+  const [vehicleStationNameToSearch, setVehicleStationNameToSearch] = useState("");
+  const [searchResults, setSearchResults] = useState("");
   const [reportType, setReportType] = useState("");
   const [inspectorCount, setInspectorCount] = useState(0);
   const [notes, setNotes] = useState("");
+
+
+  const viewReports = async() => {
+    if(!vehicleStationNameToSearch) {
+      alert('Please fill out the vehicle/station name.');
+      return;
+    }
+    try{
+      const viewTheReports = {
+        name: vehicleStationNameToSearch,
+        todayDate: dayjs().format('YYYY-MM-DD'),
+        tomDate: dayjs().add(1, 'day').format('YYYY-MM-DD')
+      }
+      const response = await fetch('http://localhost:3000/adminGetRecentVotes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify(viewTheReports)
+      })
+      const data = await response.json()
+      setSearchResults(data[0]?.average ?? '0.00')
+    }catch(err){
+      console.error(err)
+    }
+  }
 
   const addReport = async() => {
     if(!vehicleStationName || !reportType) {
@@ -107,7 +143,38 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
     }catch(err){
       console.error(err)
     }
-    
+  }
+
+  //update the color of the status based on the number of inspectors
+  const getStatusColor = () => {
+    const numValue = parseFloat(searchResults)
+    if (numValue === 0){
+      return 'green'
+    }else if (numValue >= 0.5 && numValue < 2.0){
+      return '#D5B60A'
+    }else if (numValue >= 2.0 && numValue < 4.0){
+      return 'orange'
+    }else if (numValue >= 4.0){
+      return 'red'
+    }else {
+      return 'black'
+    }
+  }
+
+  //update the text of the status based on the number of inspectors
+  const getStatusText = () => {
+    const numValue = parseFloat(searchResults)
+    if (numValue === 0){
+      return 'STATUS: SAFE'
+    }else if (numValue >= 0.5 && numValue < 2.0){
+      return 'STATUS: LOW RISK'
+    }else if (numValue >= 2.0 && numValue < 4.0){
+      return 'STATUS: CAUTION'
+    }else if (numValue >= 4.0){
+      return 'STATUS: High Alert'
+    }else{
+      return 'STATUS: N/A'
+    }
   }
 
   // Initialize Firebase
@@ -322,9 +389,15 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
         )}
       </MapContainer>
 
+      <Grid container direction="row" 
+        sx={{
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         {/* only add in new report form if a user is signed in */}
         {user && (
-          <Box sx = {style}>
+          <Box sx = {style2}>
           <h3 className='newReportH3'>Make a new report</h3>
           <Stack spacing={2}>
             <TextField
@@ -360,7 +433,33 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
           <Button onClick={addReport}>Submit report</Button>
       </Box>
         )}
-        
+        <Box sx = {style}>
+          <h3 className='newReportH3'>View the results of the 5 most recent reports for a station or vehicle</h3>
+          <Stack spacing={2}>
+            <TextField
+              style={{marginBottom: '20px', width: '400px'}}
+              select
+              label = 'Select a vehicle or station'
+              variant = 'outlined'
+              required
+              value = {vehicleStationNameToSearch}
+              onChange = {(event) => {
+                //first set the name 
+                setVehicleStationNameToSearch(event.target.value)
+              }}
+            >
+              {vehicleStationData.map((vsData) => (
+                <MenuItem key={vsData.name} value={vsData.name}>
+                  {vsData.name}
+                </MenuItem>
+              ))}
+            </TextField>
+          </Stack>
+          <p style={{color: getStatusColor()}}>{getStatusText()}</p>
+          <p id = 'results'>Of the 5 most recent votes from today, the average amount of reported inspectors for {vehicleStationNameToSearch} is: {searchResults}</p>
+          <Button onClick={viewReports}>View reports</Button>
+      </Box>
+      </Grid>
     </div>
   );
 };
