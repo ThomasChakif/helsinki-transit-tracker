@@ -121,6 +121,9 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
     if(!vehicleStationName || !reportType) {
       alert('Please fill out all required fields.');
       return;
+    }else if(inspectorCount >= 10){
+      alert('Inspector count must not be more than 10.');
+      return;
     }
     try{
       const newReport = {
@@ -440,7 +443,7 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
                 </MenuItem>
               ))}
             </TextField>
-            <TextField style={{marginBottom: '20px', width: '400px'}} required label="Number of inspectors" type="text" inputProps={{min: 0, step: 1, pattern: '[0-9]*',}} value={inspectorCount} onChange={event => {
+            <TextField style={{marginBottom: '20px', width: '400px'}} required label="Number of inspectors" type="text" value={inspectorCount} onChange={event => {
               const ic = event.target.value
               if (/^\d*$/.test(ic)) { // regex to allow only whole numbers
                 setInspectorCount(ic)
@@ -475,7 +478,7 @@ const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVo
             </TextField>
           </Stack>
           <p style={{color: getStatusColor()}}>{getStatusText()}</p>
-          <p id = 'results'>Of the 5 most recent votes from today, the average amount of reported inspectors for {vehicleStationNameToSearch} is: {searchResults}</p>
+          <p style={{color: 'black'}}>Of the 5 most recent votes from today, the average amount of reported inspectors for is: {searchResults}</p>
           <Button onClick={viewReports}>View reports</Button>
       </Box>
       </Grid>
