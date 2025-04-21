@@ -1,16 +1,13 @@
 import { useState, useEffect, useMemo } from 'react'
-import { Stack, Box, Snackbar, MenuItem } from '@mui/material'
+import {Snackbar, MenuItem } from '@mui/material'
 import { MaterialReactTable } from 'material-react-table'
 import DeleteIcon from '@mui/icons-material/Delete'
-import AssessmentIcon from '@mui/icons-material/Assessment'
 import DeleteModal from './DeleteModal'
-import Map from './Map'
 import './Admin.css'
 
 function Admin() {
   const [applications, setApplications] = useState([])
   const [selectedTransaction, setSelectedTransaction] = useState()
-  const [transactionModalOpen, setTransactionModalOpen] = useState(false)
   const [transactionDeleteModalOpen, setTransactionDeleteModalOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
 
@@ -95,12 +92,16 @@ function Admin() {
     }
   }
 
-  useEffect(() => {
+  const refreshAllData = () => {
     getTransactions()
     getVehicleResults()
     getStationResults()
     getTopVehicle()
     getTodaysVotes()
+  }
+
+  useEffect(() => {
+    refreshAllData()
   }, [])
 
   const columns = useMemo(() => [

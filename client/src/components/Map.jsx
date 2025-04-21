@@ -35,7 +35,7 @@ const style2 = {
   margin: '20px',
 };
 
-const Map = ({getTransactions, getVehicleResults, getStationResults, getTodaysVotes, getTopVehicle}) => {
+const Map = () => {
   // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyCnB2Dn0c3uJ78CeS9rOGLtVoFKkfIRqfM",
