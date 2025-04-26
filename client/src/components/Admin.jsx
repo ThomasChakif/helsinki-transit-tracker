@@ -145,13 +145,13 @@ function Admin() {
           <div className="stat-card">
             <div className="stat-title">Today's Reports</div>
             <div className="stat-value">{todaysVotes}</div>
-            <div className="stat-description">Reports submitted today</div>
+            <div className="stat-description">Report(s) submitted today</div>
           </div>
           
           <div className="stat-card">
             <div className="stat-title">Top Vehicle</div>
             <div className="stat-value">{topVehicleName}</div>
-            <div className="stat-description">Average of {topVehicleCount} inspectors per report</div>
+            <div className="stat-description">Average of {topVehicleCount} inspector(s) per report</div>
           </div>
           
           <div className="stat-card">
