@@ -478,7 +478,7 @@ const Map = () => {
             </TextField>
           </Stack>
           <p style={{color: getStatusColor()}}>{getStatusText()}</p>
-          <p style={{color: 'black'}}>Of the 5 most recent votes from today, the average amount of reported inspectors for is: {searchResults}</p>
+          <p style={{color: 'black'}}>Of the 5 most recent votes from today, the average amount of reported inspectors is: {searchResults}</p>
           <Button onClick={viewReports}>View reports</Button>
       </Box>
       </Grid>
