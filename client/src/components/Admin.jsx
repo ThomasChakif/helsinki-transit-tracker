@@ -6,13 +6,12 @@ import DeleteModal from './DeleteModal'
 import './Admin.css'
 
 function Admin() {
-  const [applications, setApplications] = useState([])
-  const [selectedTransaction, setSelectedTransaction] = useState()
-  const [transactionDeleteModalOpen, setTransactionDeleteModalOpen] = useState(false)
+  // initialize all variables
+  const [reports, setReports] = useState([])
+  const [selectedReport, setSelectedReport] = useState()
+  const [reportDeleteModalOpen, setReportDeleteModalOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
-
-  const handleModalOpen = () => setTransactionModalOpen(true)
-  const handleSnackbarClose = () => setSnackbarOpen(false)
+  const handleSnackbarClose = () => setSnackbarOpen(false) //used to handle errors
 
   const [vehicleResults, setVehicleResults] = useState(0)
   const [stationResults, setStationResults] = useState(0)
@@ -21,6 +20,7 @@ function Admin() {
   const [topVehicleCount, setTopVehicleCount] = useState(0)
   const [todaysVotes, setTodaysVotes] = useState(0)
 
+  //function to fetch the all time top vehicle with the most inspector reports
   const getTopVehicle = async () => {
     try {
       const resp = await fetch('http://localhost:3000/adminTopVehicle')
@@ -28,14 +28,15 @@ function Admin() {
         setSnackbarOpen(true)
       }
       const data = await resp.json()
-      setTopVehicleName(data[0]?.name ?? 'N/A')
-      setTopVehicleCount(data[0]?.average_inspectors ?? 'None')
+      setTopVehicleName(data[0]?.name ?? 'N/A') //set vehicle name
+      setTopVehicleCount(data[0]?.average_inspectors ?? 'None') //set vehicle avg inspectors
     } catch (err) {
       console.error(err)
       setSnackbarOpen(true)
     }
   }
  
+  //function to get the amount of reports made on the current day
   const getTodaysVotes = async () => {
     try {
       const resp = await fetch('http://localhost:3000/adminGetTodaysVotes')
@@ -50,20 +51,22 @@ function Admin() {
     }
   }
 
-  const getTransactions = async () => {
+  //function to get all reports so that they may be added to admin dashboard table
+  const getReports = async () => {
     try {
       const resp = await fetch('http://localhost:3000/admin')
       if (!resp.ok) {
         setSnackbarOpen(true)
       }
       const data = await resp.json()
-      setApplications(data)
+      setReports(data)
     } catch (err) {
       console.error(err)
       setSnackbarOpen(true)
     }
   }
 
+  //function to get the average inspector count of the last 10 vehicle reports
   const getVehicleResults = async () => {
     try {
       const resp = await fetch('http://localhost:3000/adminVehicleResults')
@@ -71,13 +74,14 @@ function Admin() {
         setSnackbarOpen(true)
       }
       const data = await resp.json()
-      setVehicleResults(data[0]?.avg ?? 'N/A')
+      setVehicleResults(data[0]?.avg ?? 'N/A') //set the avg
     } catch (err) {
       console.error(err)
       setSnackbarOpen(true)
     }
   }
 
+  //function to get the average inspector count of the last 10 station reports
   const getStationResults = async () => {
     try {
       const resp = await fetch('http://localhost:3000/adminStationResults')
@@ -85,15 +89,16 @@ function Admin() {
         setSnackbarOpen(true)
       }
       const data = await resp.json()
-      setStationResults(data[0]?.avg ?? 'N/A')
+      setStationResults(data[0]?.avg ?? 'N/A') //set the average
     } catch (err) {
       console.error(err)
       setSnackbarOpen(true)
     }
   }
 
+  //call all functions to initialize data on admin dashboard. Having them all together is better for convenience on the deleteModal side
   const refreshAllData = () => {
-    getTransactions()
+    getReports()
     getVehicleResults()
     getStationResults()
     getTopVehicle()
@@ -104,6 +109,8 @@ function Admin() {
     refreshAllData()
   }, [])
 
+  //initialize our table with the following attributes: 
+  //report ID, type, vehicle name, inspector count, notes, email of the user who submitted it, and when it was created
   const columns = useMemo(() => [
     {
       accessorKey: 'report_id',
@@ -139,6 +146,7 @@ function Admin() {
     <>
       <h1>Helsinki Transit Admin Dashboard</h1>
       
+      {/* containers for the different admin statistics boxes: today's reports, all-time vehicle, average of last 10 vehicle and station reports*/}
       <div className="stats-container">
         <h3>Admin Statistics</h3>
         <div className="stats-grid">
@@ -168,15 +176,17 @@ function Admin() {
         </div>
       </div>
       
+      {/* reports table, made up of the data found in reports and structured using columns */}
+      {/* admins can delete a report if they deem it necessary*/}
       <h3>All Reports</h3>
       <MaterialReactTable 
-        data={applications} 
+        data={reports} 
         columns={columns}
         enableRowActions
         renderRowActionMenuItems={({ row }) => [
           <MenuItem key='delete' onClick={() => {
-            setSelectedTransaction(row.original.report_id)
-            setTransactionDeleteModalOpen(true)
+            setSelectedReport(row.original.report_id)
+            setReportDeleteModalOpen(true)
           }}>
             <DeleteIcon style={{ marginRight: '8px' }}/>
             Delete
@@ -184,17 +194,15 @@ function Admin() {
         ]}
       />
       
+      {/* delete modal when an admin deletes a report */}
       <DeleteModal 
-        transactionID={selectedTransaction} 
-        transactionDeleteModalOpen={transactionDeleteModalOpen}
-        setTransactionDeleteModalOpen={setTransactionDeleteModalOpen}
-        getTransactions={getTransactions}
-        getVehicleResults={getVehicleResults}
-        getStationResults={getStationResults}
-        getTodaysVotes={getTodaysVotes}
-        getTopVehicle={getTopVehicle}
+        reportID={selectedReport} 
+        reportDeleteModalOpen={reportDeleteModalOpen}
+        setReportDeleteModalOpen={setReportDeleteModalOpen}
+        refreshAllData={refreshAllData}
       />
 
+    {/* snackbar for handling errors */}
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         open={snackbarOpen}

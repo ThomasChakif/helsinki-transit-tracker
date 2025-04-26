@@ -26,7 +26,7 @@ app.get('/up', (req, res) => {
     res.json({status: 'up'})
 })
 
-//route to grab all inserts from database
+//route to grab all reports from the database
 app.get('/admin', (req, res) => {
     try{
         const qs = 'select * from reports'
@@ -36,6 +36,7 @@ app.get('/admin', (req, res) => {
     }
 })
 
+//route to get the average inspector count of the last 10 vehicle reports
 app.get('/adminVehicleResults', (req, res) => {
   try{
       const qs = "select round(avg(inspector_count), 2) as avg from reports where report_type = 'vehicle' limit 10"
@@ -45,6 +46,7 @@ app.get('/adminVehicleResults', (req, res) => {
   }
 })
 
+//route to get the average inspector count of the last 10 station reports
 app.get('/adminStationResults', (req, res) => {
   try{
     const qs = "select round(avg(inspector_count), 2) as avg from reports where report_type = 'station' limit 10"
@@ -54,6 +56,8 @@ app.get('/adminStationResults', (req, res) => {
   }
 })
 
+//route to get the name and average inspector count of the vehicle with the highest average inspector count (all-time)
+//the vehicle must have at least 5 votes to be considered
 app.get('/adminTopVehicle', (req, res) => {
   try{
     const qs = "SELECT name, (SUM(inspector_count) / count(*)) as average_inspectors FROM reports WHERE report_type = 'vehicle' GROUP BY name having count(*) >= 5 ORDER BY average_inspectors DESC LIMIT 1"
@@ -63,6 +67,7 @@ app.get('/adminTopVehicle', (req, res) => {
   }
 })
 
+//route to get the number of reports made on the current day (only counts reports that weren't deleted)
 app.get('/adminGetTodaysVotes', (req, res) => {
   try{
     const qs = "SELECT count(*) FROM reports WHERE DATE(created_at) = CURRENT_DATE"
@@ -72,7 +77,8 @@ app.get('/adminGetTodaysVotes', (req, res) => {
   }
 })
 
-//get 5 most recent votes made today for a specific station or vehicle
+//route for when a user searches for the last 5 votes for a particular station/vehicle
+//we only consider the last 5 votes that were made on the same day the user is using the app (doesn't factor in previous votes)
 app.post('/adminGetRecentVotes', (req, res) => {
   try {
     let body = req.body
@@ -86,6 +92,8 @@ app.post('/adminGetRecentVotes', (req, res) => {
   }
 })
 
+
+//route to add in a new report 
 app.post('/newReport', (req, res) => {
   try{
     let body = req.body

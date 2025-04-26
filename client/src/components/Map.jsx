@@ -36,7 +36,7 @@ const style2 = {
 };
 
 const Map = () => {
-  // Firebase configuration
+  // Firebase configuration for Google OAuth2 sign in
   const firebaseConfig = {
     apiKey: "AIzaSyCnB2Dn0c3uJ78CeS9rOGLtVoFKkfIRqfM",
     authDomain: "helsinki-test-ecbb2.firebaseapp.com",
@@ -47,7 +47,7 @@ const Map = () => {
     measurementId: "G-2NBC6V42XP"
   };
 
-  // States for data
+  //the different states we have for the various stations and routes that appear on the map
   const [transportData, setTransportData] = useState({
     stations: {
       train: [],
@@ -63,11 +63,10 @@ const Map = () => {
     }
   });
 
-  // States for UI
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  // States for visibility
+  //we use these states for when a user wants to enable/disable different routes on the map
   const [layerVisibility, setLayerVisibility] = useState({
     trainStations: false,
     metroStations: false,
@@ -79,10 +78,11 @@ const Map = () => {
     lightRailRoutes: false
   });
 
-  // User authentication state
+  //for setting users
   const [user, setUser] = useState(null);
   const [showLoginButton, setShowLoginButton] = useState(true);
 
+  //various variables for reporting or checking reports
   const [vehicleStationData, setVehicleStationData] = useState([]);
   const [vehicleStationName, setVehicleStationName] = useState("");
   const [vehicleStationNameToSearch, setVehicleStationNameToSearch] = useState("");
@@ -92,17 +92,20 @@ const Map = () => {
   const [notes, setNotes] = useState("");
 
 
+  //function for checking the 5 most recent reports made today for a particular vehicle or station
   const viewReports = async() => {
-    if(!vehicleStationNameToSearch) {
+    if(!vehicleStationNameToSearch) { //if no vehicle/station was chosen, alert the user to pick one
       alert('Please fill out the vehicle/station name.');
       return;
     }
+    // structure the reponse to send to the database
     try{
       const viewTheReports = {
         name: vehicleStationNameToSearch,
         todayDate: dayjs().format('YYYY-MM-DD'),
         tomDate: dayjs().add(1, 'day').format('YYYY-MM-DD')
       }
+      //fetch the average count of 5 most recent votes made today
       const response = await fetch('http://localhost:3000/adminGetRecentVotes', {
         method: 'POST',
         headers: {
@@ -111,20 +114,22 @@ const Map = () => {
         body: JSON.stringify(viewTheReports)
       })
       const data = await response.json()
-      setSearchResults(data[0]?.average ?? '0.00')
+      setSearchResults(data[0]?.average ?? '0.00') //set average here
     }catch(err){
       console.error(err)
     }
   }
 
+    //function for adding in a new report
   const addReport = async() => {
-    if(!vehicleStationName || !reportType) {
+    if(!vehicleStationName || !reportType) { //if a vehicle/station was not chosen, alert the user
       alert('Please fill out all required fields.');
       return;
-    }else if(inspectorCount >= 10){
+    }else if(inspectorCount >= 10){ //if the user selected 10 or more inspectors, alert them this is not possible
       alert('Inspector count must not be more than 10.');
       return;
     }
+    //structure response to database
     try{
       const newReport = {
         email: user.email,
@@ -134,7 +139,7 @@ const Map = () => {
         count: inspectorCount,
         time: dayjs().format('YYYY-MM-DD HH:mm:ss')
       }
-  
+      //submit new report
       await fetch('http://localhost:3000/newReport', {
         method: 'POST',
         headers: {
@@ -142,6 +147,7 @@ const Map = () => {
         },
         body: JSON.stringify(newReport)
       })
+      //successful report, alert user
       alert('Report successfully submitted!')
     }catch(err){
       console.error(err)
@@ -181,12 +187,13 @@ const Map = () => {
     }
   }
 
-  // Initialize Firebase
+  //firebase initialization
   useEffect(() => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     auth.languageCode = 'en';
 
+    //on a successful sign in, set the user's info and remove the log in button
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
@@ -197,10 +204,10 @@ const Map = () => {
       }
     });
 
-    return () => unsubscribe(); // Clean up subscription
+    return () => unsubscribe(); //clean up subscription
   }, []);
 
-  // Google sign-in handler
+  //handle user signing in with Google Oauth. must be signed in to make a new report
   const handleGoogleSignIn = async () => {
     try {
       const auth = getAuth();
@@ -208,10 +215,9 @@ const Map = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       
-      // The signed-in user info
+      //set user info
       const user = result.user;
       setUser(user);
-      console.log(getAuth()._persistenceManager.persistence.type);
       setShowLoginButton(false);
     } catch (error) {
       console.error("Error during sign-in:", error.message);
@@ -221,26 +227,25 @@ const Map = () => {
   const handleSignOut = async () => {
     try {
       const auth = getAuth();
-      await signOut(auth);
-      // Sign-out successful
+      await signOut(auth); //signOut is a firebase function used to handle signing out with Google
+      //successful sign out
       setUser(null);
       setShowLoginButton(true);
-      // Reset user-specific state if needed
+      //reset user-selections in new report menu
       setVehicleStationName("");
       setNotes("");
       setInspectorCount(0);
     } catch (error) {
-      console.error("Error during sign-out:", error.message);
+      console.error(error);
       alert("Failed to sign out. Please try again.");
     }
   };
 
-  // Load data
   useEffect(() => {
     const loadData = async () => {
       setIsLoading(true);
       try {
-        // Load all data
+        //load all train, metro, tram, station data
         const [
           trainStationsData, metroStationsData, tramStationsData, lightRailStationsData,
           trainRoutesData, metroRoutesData, tramRoutesData, lightRailRoutesData
@@ -255,7 +260,7 @@ const Map = () => {
           fetchLightRailRoutes()
         ]);
 
-        // Update state with all data
+        //update state with all data
         setTransportData({
           stations: {
             train: trainStationsData,
@@ -290,7 +295,7 @@ const Map = () => {
     .then(data => setVehicleStationData(data.data))
   })
 
-  // Toggle handler
+  //togglt the handler
   const handleToggle = (layerId) => {
     setLayerVisibility(prev => ({
       ...prev,
@@ -298,7 +303,7 @@ const Map = () => {
     }));
   };
 
-  // Create toggle controls configuration
+  //create the controls/toggles for viewing different routes
   const toggleControls = [
     { id: 'metroStations', label: 'Show Metro Stations', checked: layerVisibility.metroStations },
     { id: 'metroRoutes', label: 'Show Metro Routes', checked: layerVisibility.metroRoutes },
@@ -311,6 +316,8 @@ const Map = () => {
   ];
 
   return (
+    // the following div deals with the Google OAuth. If show login button is true (not signed in yet), we display the button and allow users to sign in
+    // if it's false, we display the signed-in user's name and a sign out button
     <div>
       <div className="auth-container">
         {showLoginButton ? (
@@ -411,13 +418,14 @@ const Map = () => {
         )}
       </MapContainer>
 
+        {/* grid for new report box and view report box */}
       <Grid container direction="row" 
         sx={{
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        {/* only add in new report form if a user is signed in */}
+        {/* only display in new report form if a user is signed in */}
         {user && (
           <Box sx = {style2}>
           <h3 className='newReportH3'>Make a new report</h3>
@@ -433,16 +441,19 @@ const Map = () => {
                 //first set the name 
                 const selectedPlatform = vehicleStationData.find(platform => platform.name === event.target.value)
                 setVehicleStationName(event.target.value)
+                // then use the json data to find the type (vehicle or station)
                 const rt = selectedPlatform?.type;
                 setReportType(rt)
               }}
             >
+              {/* have a dropdown menu of all vehicle/station names */}
               {vehicleStationData.map((vsData) => (
                 <MenuItem key={vsData.name} value={vsData.name}>
                   {vsData.name}
                 </MenuItem>
               ))}
             </TextField>
+            {/* report the number of inspectors (minimum 0, must be whole positive numbers) */}
             <TextField style={{marginBottom: '20px', width: '400px'}} required label="Number of inspectors" type="text" value={inspectorCount} onChange={event => {
               const ic = event.target.value
               if (/^\d*$/.test(ic)) { // regex to allow only whole numbers
@@ -450,11 +461,13 @@ const Map = () => {
               }
             }}
             />
+            {/* optional notes */}
             <TextField style={{marginBottom: '20px', width: '400px'}} label="Notes (optional)" onChange={event => setNotes(event.target.value)}/>
           </Stack>
           <Button onClick={addReport}>Submit report</Button>
       </Box>
         )}
+        {/* used to view reports for a station or vehicle */}
         <Box sx = {style}>
           <h3 className='newReportH3'>View the results of the 5 most recent reports for a station or vehicle</h3>
           <Stack spacing={2}>
@@ -466,10 +479,11 @@ const Map = () => {
               required
               value = {vehicleStationNameToSearch}
               onChange = {(event) => {
-                //first set the name 
+                //set the name of the vehcile or station to search
                 setVehicleStationNameToSearch(event.target.value)
               }}
             >
+              {/* have a dropdown menu of all vehicle/station names */}
               {vehicleStationData.map((vsData) => (
                 <MenuItem key={vsData.name} value={vsData.name}>
                   {vsData.name}
@@ -477,6 +491,7 @@ const Map = () => {
               ))}
             </TextField>
           </Stack>
+          {/* update the status text and color depending on the results of the 5 most recent votes */}
           <p style={{color: getStatusColor()}}>{getStatusText()}</p>
           <p style={{color: 'black'}}>Of the 5 most recent votes from today, the average amount of reported inspectors is: {searchResults}</p>
           <Button onClick={viewReports}>View reports</Button>
