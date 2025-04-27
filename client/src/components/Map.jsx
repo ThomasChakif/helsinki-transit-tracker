@@ -312,176 +312,178 @@ const Map = () => {
 
   return (
     <div>
-      <div className="auth-container">
-        {showLoginButton ? (
-          <button 
-            id="google-login-btn" 
-            className="google-button" 
-            onClick={handleGoogleSignIn}
-          >
-            <i className="fab fa-google"></i> Login With Google
-          </button>
-        ) : (
-          <div id="displayUserInfo" className="user-info">
-            <p id="userName">Hi, {user?.displayName}</p>
-            <button id="sign-out-btn" onClick={handleSignOut}>Sign Out</button>
-          </div>
-        )}
-      </div>
-      
-      {isLoading && <p>Loading data...</p>}
-      {error && <p className="error">{error}</p>}
-      
-      <Controls toggles={toggleControls} onToggle={handleToggle} />
-
-      <MapContainer 
-        className='mapcontainer'
-        center={DEFAULT_POSITION}
-        zoom={DEFAULT_ZOOM}
-        style={{ height: "850px", width: "100%" }}
-      >
-        <TileLayer
-          url={TILE_LAYER.url}
-          attribution={TILE_LAYER.attribution}
-          maxZoom={TILE_LAYER.maxZoom}
-        />
-
-        {/* Metro layers */}
-        {layerVisibility.metroRoutes && (
-          <TransportLayer 
-            type="metro" 
-            data={transportData.routes.metro} 
-            isRoute={true} 
-            color={TRANSPORT_COLORS.SUBWAY} 
-          />
-        )}
-        {layerVisibility.metroStations && (
-          <TransportLayer 
-            type="metro" 
-            data={transportData.stations.metro} 
-          />
-        )}
-
-        {/* Train layers */}
-        {layerVisibility.trainRoutes && (
-          <TransportLayer 
-            type="train" 
-            data={transportData.routes.train} 
-            isRoute={true} 
-            color={TRANSPORT_COLORS.RAIL} 
-          />
-        )}
-        {layerVisibility.trainStations && (
-          <TransportLayer 
-            type="train" 
-            data={transportData.stations.train} 
-          />
-        )}
-
-        {/* Tram layers */}
-        {layerVisibility.tramRoutes && (
-          <TransportLayer 
-            type="tram" 
-            data={transportData.routes.tram} 
-            isRoute={true} 
-            color={TRANSPORT_COLORS.TRAM} 
-          />
-        )}
-        {layerVisibility.tramStations && (
-          <TransportLayer 
-            type="tram" 
-            data={transportData.stations.tram} 
-          />
-        )}
-
-        {/* Light Rail layers */}
-        {layerVisibility.lightRailRoutes && (
-          <TransportLayer 
-            type="lightRail" 
-            data={transportData.routes.lightRail} 
-            isRoute={true} 
-            color={TRANSPORT_COLORS.LIGHTRAIL} 
-          />
-        )}
-        {layerVisibility.lightRailStations && (
-          <TransportLayer 
-            type="lightRail" 
-            data={transportData.stations.lightRail} 
-          />
-        )}
-      </MapContainer>
-
-      <Grid container direction="row" 
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* only add in new report form if a user is signed in */}
-        {user && (
-          <Box sx = {style2}>
-          <h3 className='newReportH3'>Make a new report</h3>
-          <Stack spacing={2}>
-            <TextField
-              style={{marginBottom: '20px', width: '400px'}}
-              select
-              label = 'Select a vehicle or station'
-              variant = 'outlined'
-              required
-              value = {vehicleStationName}
-              onChange = {(event) => {
-                //first set the name 
-                const selectedPlatform = vehicleStationData.find(platform => platform.name === event.target.value)
-                setVehicleStationName(event.target.value)
-                const rt = selectedPlatform?.type;
-                setReportType(rt)
-              }}
+      <Stack direction='column' spacing={2} alignItems={'center'}>
+        <div className="auth-container">
+          {showLoginButton ? (
+            <button 
+              id="google-login-btn" 
+              className="google-button" 
+              onClick={handleGoogleSignIn}
             >
-              {vehicleStationData.map((vsData) => (
-                <MenuItem key={vsData.name} value={vsData.name}>
-                  {vsData.name}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField style={{marginBottom: '20px', width: '400px'}} required label="Number of inspectors" type="text" value={inspectorCount} onChange={event => {
-              const ic = event.target.value
-              if (/^\d*$/.test(ic)) { // regex to allow only whole numbers
-                setInspectorCount(ic)
-              }
-            }}
+              <i className="fab fa-google"></i> Login With Google
+            </button>
+          ) : (
+            <div id="displayUserInfo" className="user-info">
+              <p id="userName">Hi, {user?.displayName}</p>
+              <button id="sign-out-btn" onClick={handleSignOut}>Sign Out</button>
+            </div>
+          )}
+        </div>
+        
+        {isLoading && <p>Loading data...</p>}
+        {error && <p className="error">{error}</p>}
+        
+        <Controls toggles={toggleControls} onToggle={handleToggle} />
+
+        <MapContainer 
+          className='mapcontainer'
+          center={DEFAULT_POSITION}
+          zoom={DEFAULT_ZOOM}
+          style={{ height: "850px", width: "75%"}}
+        >
+          <TileLayer
+            url={TILE_LAYER.url}
+            attribution={TILE_LAYER.attribution}
+            maxZoom={TILE_LAYER.maxZoom}
+          />
+
+          {/* Metro layers */}
+          {layerVisibility.metroRoutes && (
+            <TransportLayer 
+              type="metro" 
+              data={transportData.routes.metro} 
+              isRoute={true} 
+              color={TRANSPORT_COLORS.SUBWAY} 
             />
-            <TextField style={{marginBottom: '20px', width: '400px'}} label="Notes (optional)" onChange={event => setNotes(event.target.value)}/>
-          </Stack>
-          <Button onClick={addReport}>Submit report</Button>
-      </Box>
-        )}
-        <Box sx = {style}>
-          <h3 className='newReportH3'>View the results of the 5 most recent reports for a station or vehicle</h3>
-          <Stack spacing={2}>
-            <TextField
-              style={{marginBottom: '20px', width: '400px'}}
-              select
-              label = 'Select a vehicle or station'
-              variant = 'outlined'
-              required
-              value = {vehicleStationNameToSearch}
-              onChange = {(event) => {
-                //first set the name 
-                setVehicleStationNameToSearch(event.target.value)
+          )}
+          {layerVisibility.metroStations && (
+            <TransportLayer 
+              type="metro" 
+              data={transportData.stations.metro} 
+            />
+          )}
+
+          {/* Train layers */}
+          {layerVisibility.trainRoutes && (
+            <TransportLayer 
+              type="train" 
+              data={transportData.routes.train} 
+              isRoute={true} 
+              color={TRANSPORT_COLORS.RAIL} 
+            />
+          )}
+          {layerVisibility.trainStations && (
+            <TransportLayer 
+              type="train" 
+              data={transportData.stations.train} 
+            />
+          )}
+
+          {/* Tram layers */}
+          {layerVisibility.tramRoutes && (
+            <TransportLayer 
+              type="tram" 
+              data={transportData.routes.tram} 
+              isRoute={true} 
+              color={TRANSPORT_COLORS.TRAM} 
+            />
+          )}
+          {layerVisibility.tramStations && (
+            <TransportLayer 
+              type="tram" 
+              data={transportData.stations.tram} 
+            />
+          )}
+
+          {/* Light Rail layers */}
+          {layerVisibility.lightRailRoutes && (
+            <TransportLayer 
+              type="lightRail" 
+              data={transportData.routes.lightRail} 
+              isRoute={true} 
+              color={TRANSPORT_COLORS.LIGHTRAIL} 
+            />
+          )}
+          {layerVisibility.lightRailStations && (
+            <TransportLayer 
+              type="lightRail" 
+              data={transportData.stations.lightRail} 
+            />
+          )}
+        </MapContainer>
+
+        <Grid container direction="row" 
+          sx={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* only add in new report form if a user is signed in */}
+          {user && (
+            <Box sx = {style2}>
+            <h3 className='newReportH3'>Make a new report</h3>
+            <Stack spacing={2}>
+              <TextField
+                style={{marginBottom: '20px', width: '400px'}}
+                select
+                label = 'Select a vehicle or station'
+                variant = 'outlined'
+                required
+                value = {vehicleStationName}
+                onChange = {(event) => {
+                  //first set the name 
+                  const selectedPlatform = vehicleStationData.find(platform => platform.name === event.target.value)
+                  setVehicleStationName(event.target.value)
+                  const rt = selectedPlatform?.type;
+                  setReportType(rt)
+                }}
+              >
+                {vehicleStationData.map((vsData) => (
+                  <MenuItem key={vsData.name} value={vsData.name}>
+                    {vsData.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField style={{marginBottom: '20px', width: '400px'}} required label="Number of inspectors" type="text" value={inspectorCount} onChange={event => {
+                const ic = event.target.value
+                if (/^\d*$/.test(ic)) { // regex to allow only whole numbers
+                  setInspectorCount(ic)
+                }
               }}
-            >
-              {vehicleStationData.map((vsData) => (
-                <MenuItem key={vsData.name} value={vsData.name}>
-                  {vsData.name}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Stack>
-          <p style={{color: getStatusColor()}}>{getStatusText()}</p>
-          <p style={{color: 'black'}}>Of the 5 most recent votes from today, the average amount of reported inspectors for is: {searchResults}</p>
-          <Button onClick={viewReports}>View reports</Button>
-      </Box>
-      </Grid>
+              />
+              <TextField style={{marginBottom: '20px', width: '400px'}} label="Notes (optional)" onChange={event => setNotes(event.target.value)}/>
+            </Stack>
+            <Button onClick={addReport}>Submit report</Button>
+        </Box>
+          )}
+          <Box sx = {style}>
+            <h3 className='newReportH3'>View the results of the 5 most recent reports for a station or vehicle</h3>
+            <Stack spacing={2}>
+              <TextField
+                style={{marginBottom: '20px', width: '400px'}}
+                select
+                label = 'Select a vehicle or station'
+                variant = 'outlined'
+                required
+                value = {vehicleStationNameToSearch}
+                onChange = {(event) => {
+                  //first set the name 
+                  setVehicleStationNameToSearch(event.target.value)
+                }}
+              >
+                {vehicleStationData.map((vsData) => (
+                  <MenuItem key={vsData.name} value={vsData.name}>
+                    {vsData.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Stack>
+            <p style={{color: getStatusColor()}}>{getStatusText()}</p>
+            <p style={{color: 'black'}}>Of the 5 most recent votes from today, the average amount of reported inspectors for is: {searchResults}</p>
+            <Button onClick={viewReports}>View reports</Button>
+        </Box>
+        </Grid>
+      </Stack>
     </div>
   );
 };
