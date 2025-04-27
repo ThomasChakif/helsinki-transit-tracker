@@ -4,9 +4,9 @@
 ### Project Specifications
 * User Accounts & Roles: there are 3 different roles for this project: users, authorized users, and admins. Users can view the vehicle map and view the 5 most recent votes for a particular station or vehicle, authorized users can do the same as well as make a new report on a vehicle or station, and admins have access to an admin dashboard (/admin) that display statistics about recent reports as well as a table of all reports. Admins can delete any reports. Users are authorized using Google OAuth through Firebase.
 * Database: in this project we use a postgres database with one table 'reports' which holds the following information regarding inspector reports: 
-![Database table](https://github.com/cse264/cse264-2025-spring-finalproject-fullstack-2025-SP-finalProject-FullStack/finalproject-fullstack-ThomasChakif/img/table.png
+![Database table](https://github.com/cse264/finalproject-fullstack-ThomasChakif/blob/main/img/table.png
 )
-![Database table columns][img/tableColumns.png]
+![Database table columns](https://github.com/cse264/finalproject-fullstack-ThomasChakif/blob/main/img/tableColumns.png)
 * Interactive UI: Your web app must have an interactive user interface, which can include forms, real-time updates, animations, or other dynamic elements.
 * New Library or Framework: You must use at least one library or framework that was not covered in class.
 * Internal REST API: Your project must have an API layer used to store and retrieve data
