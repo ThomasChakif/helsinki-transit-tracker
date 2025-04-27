@@ -12,14 +12,14 @@
 * Interactive UI: our app features a live map of all trams, trains, and vehicles within Helsinki. Users can choose to enable or disable any of these routes. Our app uses React-based elements (Box, Grid, Material React Table, etc.) and a simple color-scheme to provide an engaging and simple user experience. 
 * New Library or Framework: to handle the mapping on the home page, we incorporated Leaflet into our app. We also used an MQTT protocol to help with the live vehicle tracking.
 * Internal REST API:
-       - GET - `/admin` : View all reports
-       - GET - `/adminVehicleResults` : View average vehicle inspector count
-       - GET - `/adminStationResults` : View average station inspector count
-       - GET - `/adminTopVehicle` : View vehicle with highest all-time inspector count
-       - GET - `/adminGetTodaysVotes` : View number of reports made today
-       - POST - `/adminGetRecentVotes` : View recent reports for a vehicle or station
-       - POST - `/newReport` : Make a new report
-       - DELETE - `/admin/:id` : Delete a report
+  * GET - `/admin` : View all reports
+  * GET - `/adminVehicleResults` : View average vehicle inspector count
+  * GET - `/adminStationResults` : View average station inspector count
+  * GET - `/adminTopVehicle` : View vehicle with highest all-time inspector count
+  * GET - `/adminGetTodaysVotes` : View number of reports made today
+  * POST - `/adminGetRecentVotes` : View recent reports for a vehicle or station
+  * POST - `/newReport` : Make a new report
+  * DELETE - `/admin/:id` : Delete a report
 * External REST API: we use an external API through the MQTT protocol to track the live tracking of vehicles.
 
 
