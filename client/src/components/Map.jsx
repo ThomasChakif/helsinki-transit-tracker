@@ -90,7 +90,19 @@ const Map = () => {
   const [reportType, setReportType] = useState("");
   const [inspectorCount, setInspectorCount] = useState(0);
   const [notes, setNotes] = useState("");
+  
+  const [bans, setBans] = useState([])
 
+    //function to get the list of all banned users
+    const getBans = async() => {
+      try {
+        const resp = await fetch('http://localhost:3000/adminGetBans')
+        const data = await resp.json()
+        setBans(data)
+      }catch (err){
+        console.error(err)
+      }
+    }
 
   //function for checking the 5 most recent reports made today for a particular vehicle or station
   const viewReports = async() => {
@@ -129,6 +141,16 @@ const Map = () => {
       alert('Inspector count must not be more than 10.');
       return;
     }
+
+    //make a check to see if the user is banned or not. If there are, do not allow them to make a new report.
+    await getBans()
+    const userEmail = user.email
+    const isAlreadyBanned = bans.some(ban => ban.user_email.toLowerCase() === userEmail.toLowerCase());
+    if (isAlreadyBanned) {
+      alert('You are banned and cannot make a new report.');
+      return;
+    }
+
     //structure response to database
     try{
       const newReport = {
@@ -160,7 +182,7 @@ const Map = () => {
     const numValue = parseFloat(searchResults)
     if (numValue === 0){
       return 'green'
-    }else if (numValue >= 0.5 && numValue < 2.0){
+    }else if (numValue > 0.0 && numValue < 2.0){
       return '#D5B60A'
     }else if (numValue >= 2.0 && numValue < 4.0){
       return 'orange'
@@ -176,7 +198,7 @@ const Map = () => {
     const numValue = parseFloat(searchResults)
     if (numValue === 0){
       return 'STATUS: SAFE'
-    }else if (numValue >= 0.5 && numValue < 2.0){
+    }else if (numValue > 0.0 && numValue < 2.0){
       return 'STATUS: LOW RISK'
     }else if (numValue >= 2.0 && numValue < 4.0){
       return 'STATUS: CAUTION'
@@ -240,6 +262,10 @@ const Map = () => {
       alert("Failed to sign out. Please try again.");
     }
   };
+
+  useEffect(() => {
+    getBans();
+  }, []);
 
   useEffect(() => {
     const loadData = async () => {

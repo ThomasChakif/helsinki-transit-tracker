@@ -1,15 +1,32 @@
 import { useState, useEffect, useMemo } from 'react'
-import {Snackbar, MenuItem } from '@mui/material'
+import {Snackbar, MenuItem, TextField, Box, Button, Stack } from '@mui/material'
 import { MaterialReactTable } from 'material-react-table'
 import DeleteIcon from '@mui/icons-material/Delete'
 import DeleteModal from './DeleteModal'
+import DeleteBanModal from './DeleteBanModal'
 import './Admin.css'
+import dayjs from 'dayjs'
+
+const style = {
+  position: 'absolute',
+  width: 400,
+  bgcolor: 'white',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  margin: '20px',
+  left: '50%',
+  transform: 'translate(-50%)',
+};
 
 function Admin() {
   // initialize all variables
   const [reports, setReports] = useState([])
+  const [bans, setBans] = useState([])
   const [selectedReport, setSelectedReport] = useState()
+  const [selectedBan, setSelectedBan] = useState()
   const [reportDeleteModalOpen, setReportDeleteModalOpen] = useState(false)
+  const [banDeleteModalOpen, setBanDeleteModalOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
   const handleSnackbarClose = () => setSnackbarOpen(false) //used to handle errors
 
@@ -19,6 +36,47 @@ function Admin() {
   const [topVehicleName, setTopVehicleName] = useState()
   const [topVehicleCount, setTopVehicleCount] = useState(0)
   const [todaysVotes, setTodaysVotes] = useState(0)
+
+
+  const [banNotes, setBanNotes] = useState("");
+  const [banEmail, setBanEmail] = useState("");
+
+
+  const banUser = async() => {
+      if(!banEmail || !banNotes) { //must insert user and reason for ban
+        alert('Please fill out both user email and reason for ban.');
+        return;
+      }
+
+      //check if the user is already banned so that we don't ban someone twice
+      const isAlreadyBanned = bans.some(ban => ban.user_email.toLowerCase() === banEmail.toLowerCase());
+      if (isAlreadyBanned) {
+        alert('This user is already banned.');
+        return;
+      }
+
+      //structure response to database
+      try{
+        const newBan = {
+          email: banEmail,
+          notes: banNotes,
+          time: dayjs().format('YYYY-MM-DD HH:mm:ss')
+        }
+        //submit new ban
+        await fetch('http://localhost:3000/newBan', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newBan)
+        })
+        await getBans()
+        //successful report, alert user
+        alert('User successfully banned.')
+      }catch(err){
+        console.error(err)
+      }
+    }
 
   //function to fetch the all time top vehicle with the most inspector reports
   const getTopVehicle = async () => {
@@ -66,6 +124,21 @@ function Admin() {
     }
   }
 
+  //function to get the list of all banned users
+  const getBans = async() => {
+    try {
+      const resp = await fetch('http://localhost:3000/adminGetBans')
+      if (!resp.ok) {
+        setSnackbarOpen(true)
+      }
+      const data = await resp.json()
+      setBans(data)
+    }catch (err){
+      console.error(err)
+      setSnackbarOpen(true)
+    }
+  }
+
   //function to get the average inspector count of the last 10 vehicle reports
   const getVehicleResults = async () => {
     try {
@@ -99,6 +172,7 @@ function Admin() {
   //call all functions to initialize data on admin dashboard. Having them all together is better for convenience on the deleteModal side
   const refreshAllData = () => {
     getReports()
+    getBans()
     getVehicleResults()
     getStationResults()
     getTopVehicle()
@@ -109,6 +183,25 @@ function Admin() {
     refreshAllData()
   }, [])
 
+  // structure the data in the banned users table
+  const banData = useMemo(() => [
+    {
+      accessorKey: 'ban_id',
+      header: 'Ban ID'
+    },
+    {
+      accessorKey: 'user_email',
+      header: 'Banned User'
+    },
+    {
+      accessorKey: 'ban_notes',
+      header: 'Reason for Ban'
+    },
+    {
+      accessorKey: 'ban_time',
+      header: 'Time of Ban'
+    }
+  ], [])
   //initialize our table with the following attributes: 
   //report ID, type, vehicle name, inspector count, notes, email of the user who submitted it, and when it was created
   const columns = useMemo(() => [
@@ -193,6 +286,32 @@ function Admin() {
           </MenuItem>,
         ]}
       />
+
+        {/* react table to display all banned users */}
+      <h3>Banned Users</h3>
+      <MaterialReactTable 
+        data={bans} 
+        columns={banData}
+        enableRowActions
+        renderRowActionMenuItems={({ row }) => [
+          <MenuItem key='delete' onClick={() => {
+            setSelectedBan(row.original.ban_id)
+            setBanDeleteModalOpen(true)
+          }}>
+            Unban User
+          </MenuItem>,
+        ]}
+      />
+
+        {/* form to ban a new user */}
+      <Box sx = {style}>
+          <h3 className='newReportH3'>Ban User</h3>
+            <Stack spacing={2}>
+                <TextField style={{marginBottom: '20px', width: '400px'}} label="User Email" onChange={event => setBanEmail(event.target.value)}/>
+                <TextField style={{marginBottom: '20px', width: '400px'}} label="Reason For Ban" onChange={event => setBanNotes(event.target.value)}/>
+            </Stack>
+            <Button onClick={banUser}>Ban User</Button>
+      </Box>
       
       {/* delete modal when an admin deletes a report */}
       <DeleteModal 
@@ -200,6 +319,13 @@ function Admin() {
         reportDeleteModalOpen={reportDeleteModalOpen}
         setReportDeleteModalOpen={setReportDeleteModalOpen}
         refreshAllData={refreshAllData}
+      />
+
+      <DeleteBanModal
+          banID={selectedBan} 
+          banDeleteModalOpen={banDeleteModalOpen}
+          setBanDeleteModalOpen={setBanDeleteModalOpen}
+          refreshAllData={refreshAllData}
       />
 
     {/* snackbar for handling errors */}

@@ -36,6 +36,16 @@ app.get('/admin', (req, res) => {
     }
 })
 
+//route to get all banned users
+app.get('/adminGetBans', (req, res) => {
+  try {
+    const qs = 'select * from user_bans'
+    query(qs).then(data => {res.send(data.rows)}) //send all data in the table
+  }catch(err){
+    res.send('error', err)
+  }
+})
+
 //route to get the average inspector count of the last 10 vehicle reports
 app.get('/adminVehicleResults', (req, res) => {
   try{
@@ -104,11 +114,33 @@ app.post('/newReport', (req, res) => {
   }
 })
 
+//route to ban a user
+app.post('/newBan', (req, res) => {
+  try {
+    let body = req.body
+    const qs = `insert into user_bans(user_email, ban_notes, ban_time) values ('${body.email}', '${body.notes}', '${body.time}')`
+    query(qs).then(data => {res.send(data.rows)})
+  }catch(err){
+    res.send('error', err) 
+  }
+})
+
 //route to delete a report from the database
 app.delete('/admin/:id', (req, res) => {
   try {
       const reportID = req.params.id
       let qs = `delete from reports where report_id = ${reportID}`
+      query(qs).then(data => res.send(`${data.rowCount} row deleted`))
+  } catch (err) {
+      res.send('error', err)
+  }
+}) 
+
+//route to unban a user based of their id
+app.delete('/adminUnban/:id', (req, res) => {
+  try {
+      const banID = req.params.id
+      let qs = `delete from user_bans where ban_id = ${banID}`
       query(qs).then(data => res.send(`${data.rowCount} row deleted`))
   } catch (err) {
       res.send('error', err)
