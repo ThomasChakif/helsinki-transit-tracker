@@ -49,7 +49,7 @@ function Admin() {
       }
 
       //check if the user is already banned so that we don't ban someone twice
-      const isAlreadyBanned = bans.some(ban => ban.user_email.toLowerCase() === banEmail.toLowerCase());
+      const isAlreadyBanned = bans.find(ban => ban.user_email.trim().toLowerCase() === banEmail.trim().toLowerCase());
       if (isAlreadyBanned) {
         alert('This user is already banned.');
         return;

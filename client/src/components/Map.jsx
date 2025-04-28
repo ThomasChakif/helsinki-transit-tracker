@@ -145,9 +145,9 @@ const Map = () => {
     //make a check to see if the user is banned or not. If there are, do not allow them to make a new report.
     await getBans()
     const userEmail = user.email
-    const isAlreadyBanned = bans.some(ban => ban.user_email.toLowerCase() === userEmail.toLowerCase());
-    if (isAlreadyBanned) {
-      alert('You are banned and cannot make a new report.');
+    const bannedUser = bans.find(ban => ban.user_email.trim().toLowerCase() === userEmail.trim().toLowerCase());
+    if (bannedUser) {
+      alert(`You are banned and cannot make a new report. \nReason: ${bannedUser.ban_notes}`);
       return;
     }
 

@@ -1,11 +1,11 @@
 # CSE264 Final Project: Helsinki Transit Tracker
 ## Members: Thomas Chakif - thc225@lehigh.edu, Lauri Soome - las623@lehigh.edu, Aiden Astle - apa225@lehigh.edu
 
-### Project Description:
+### Project Description
 * Our Helsinki Transit Tracker is a React-based web app designed to help users track public transportation in the city of Helsinki, as well as make/view reports made regarding ticket inspectors on various vehicles and stations. 
 
 ### Project Specifications
-* User Accounts & Roles: there are 3 different roles for this project: users, authorized users, and admins. Users can view the vehicle map and view the 5 most recent votes for a particular station or vehicle, authorized users can do the same as well as make a new report on a vehicle or station, and admins have access to an admin dashboard (/admin) that display statistics about recent reports as well as a table of all reports. Admins can delete any reports, as well as ban/unban users. Banned users can still view reports, but cannot make new reports. Users are authorized using Google OAuth through Firebase.
+* User Accounts & Roles: there are 3 different roles for this project: users, authorized users, and admins. Users can view the vehicle map and view the 5 most recent votes for a particular station or vehicle, authorized users can do the same as well as make a new report on a vehicle or station, and admins have access to an admin dashboard (/admin) that display statistics about recent reports as well as a table of all reports and all banned users. Admins can delete any reports, as well as ban/unban users. Banned users can still view reports, but cannot make new reports. Users are authorized using Google OAuth through Firebase.
 * Database: in this project we use a postgres database with two tables, 'reports' and 'user_bans':
 ![Database tables](https://github.com/cse264/finalproject-fullstack-ThomasChakif/blob/main/img/tables.png)
 !['reports' columns](https://github.com/cse264/finalproject-fullstack-ThomasChakif/blob/main/img/reports.png)
