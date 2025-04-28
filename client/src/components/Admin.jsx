@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from 'react'
-import {Snackbar, MenuItem, TextField, Box, Button, Stack } from '@mui/material'
-import { MaterialReactTable } from 'material-react-table'
+import {useState, useEffect, useMemo} from 'react'
+import {Snackbar, MenuItem, TextField, Box, Button, Stack, Modal, Typography} from '@mui/material'
+import {MaterialReactTable} from 'material-react-table'
 import DeleteIcon from '@mui/icons-material/Delete'
 import DeleteModal from './DeleteModal'
 import DeleteBanModal from './DeleteBanModal'
@@ -37,9 +37,12 @@ function Admin() {
   const [topVehicleCount, setTopVehicleCount] = useState(0)
   const [todaysVotes, setTodaysVotes] = useState(0)
 
-
   const [banNotes, setBanNotes] = useState("");
   const [banEmail, setBanEmail] = useState("");
+
+  const [successfulBanModal, setSuccessfulBanModal] = useState(false);
+  const [alreadyBannedModal, setAlreadyBannedModal] = useState(false);
+
 
 
   const banUser = async() => {
@@ -51,7 +54,11 @@ function Admin() {
       //check if the user is already banned so that we don't ban someone twice
       const isAlreadyBanned = bans.find(ban => ban.user_email.trim().toLowerCase() === banEmail.trim().toLowerCase());
       if (isAlreadyBanned) {
-        alert('This user is already banned.');
+        //if a user is already banned, alert the admin with a modal for 3 seconds
+        setAlreadyBannedModal(true); 
+        setTimeout(() => {
+          setAlreadyBannedModal(false); 
+        }, 3000);
         return;
       }
 
@@ -71,8 +78,11 @@ function Admin() {
           body: JSON.stringify(newBan)
         })
         await getBans()
-        //successful report, alert user
-        alert('User successfully banned.')
+        //successful ban, alert admin with modal 
+        setSuccessfulBanModal(true); 
+        setTimeout(() => {
+          setSuccessfulBanModal(false); 
+        }, 3000);
       }catch(err){
         console.error(err)
       }
@@ -303,7 +313,7 @@ function Admin() {
         ]}
       />
 
-        {/* form to ban a new user */}
+      {/* form to ban a new user */}
       <Box sx = {style}>
           <h3 className='newReportH3'>Ban User</h3>
             <Stack spacing={2}>
@@ -312,6 +322,56 @@ function Admin() {
             </Stack>
             <Button onClick={banUser}>Ban User</Button>
       </Box>
+
+      {/* modal for when an admin successfully bans a user */}
+      <Modal
+        open={successfulBanModal}
+        onClose={() => setSuccessfulBanModal(false)}
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'white',
+          border: '2px solid #000',
+          boxShadow: 24,
+          color: 'green',
+          p: 4,
+          borderRadius: 2,
+          textAlign: 'center'
+        }}>
+          <Typography>
+            ✅ User successfully banned!
+          </Typography>
+        </Box>
+      </Modal>
+
+      {/* modal for when an admin tries banning an already banned user */}
+      <Modal
+        open={alreadyBannedModal}
+        onClose={() => setAlreadyBannedModal(false)}
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'white',
+          border: '2px solid #000',
+          boxShadow: 24,
+          color: 'red',
+          p: 4,
+          borderRadius: 2,
+          textAlign: 'center'
+        }}>
+          <Typography>
+            🚫 User is already banned. 
+          </Typography>
+        </Box>
+      </Modal>
       
       {/* delete modal when an admin deletes a report */}
       <DeleteModal 

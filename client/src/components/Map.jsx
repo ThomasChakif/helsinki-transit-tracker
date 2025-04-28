@@ -6,7 +6,7 @@ import {
 } from '../api/transportApi';
 import TransportLayer from './TransportLayer';
 import Controls from './Controls';
-import {TextField, MenuItem, Box, Button, Stack, Grid} from '@mui/material'
+import {TextField, MenuItem, Box, Button, Stack, Grid, Modal, Typography} from '@mui/material'
 import { DEFAULT_POSITION, DEFAULT_ZOOM, TILE_LAYER, TRANSPORT_COLORS } from '../constants/mapConfig';
 import './Map.css';
 import dayjs from 'dayjs'
@@ -92,6 +92,9 @@ const Map = () => {
   const [notes, setNotes] = useState("");
   
   const [bans, setBans] = useState([])
+  const [banModalOpen, setBanModalOpen] = useState(false);
+  const [successfulReportModal, setSuccessfulReportModal] = useState(false);
+  const [banReason, setBanReason] = useState("");
 
     //function to get the list of all banned users
     const getBans = async() => {
@@ -133,49 +136,53 @@ const Map = () => {
   }
 
     //function for adding in a new report
-  const addReport = async() => {
-    if(!vehicleStationName || !reportType) { //if a vehicle/station was not chosen, alert the user
-      alert('Please fill out all required fields.');
-      return;
-    }else if(inspectorCount >= 10){ //if the user selected 10 or more inspectors, alert them this is not possible
-      alert('Inspector count must not be more than 10.');
-      return;
-    }
-
-    //make a check to see if the user is banned or not. If there are, do not allow them to make a new report.
-    await getBans()
-    const userEmail = user.email
-    const bannedUser = bans.find(ban => ban.user_email.trim().toLowerCase() === userEmail.trim().toLowerCase());
-    if (bannedUser) {
-      alert(`You are banned and cannot make a new report. \nReason: ${bannedUser.ban_notes}`);
-      return;
-    }
-
-    //structure response to database
-    try{
-      const newReport = {
-        email: user.email,
-        type: reportType,
-        name: vehicleStationName,
-        notes: notes || 'No Notes',
-        count: inspectorCount,
-        time: dayjs().format('YYYY-MM-DD HH:mm:ss')
+    const addReport = async () => {
+      if(!vehicleStationName || !reportType) {
+        alert('Please fill out all required fields.');
+        return;
+      } else if(inspectorCount >= 10){
+        alert('Inspector count must not be more than 10.');
+        return;
       }
-      //submit new report
-      await fetch('http://localhost:3000/newReport', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newReport)
-      })
-      //successful report, alert user
-      alert('Report successfully submitted!')
-    }catch(err){
-      console.error(err)
+    
+      await getBans();
+      const userEmail = user.email;
+      const bannedUser = bans.find(ban => ban.user_email.trim().toLowerCase() === userEmail.trim().toLowerCase());
+      
+      //if a user is banned, open up a modal for 3 seconds that lets them know they can't make a report
+      if (bannedUser) {
+        setBanReason(bannedUser.ban_notes); 
+        setBanModalOpen(true); 
+        setTimeout(() => {
+          setBanModalOpen(false); 
+        }, 3000);
+        return;
+      }
+    
+      try {
+        const newReport = {
+          email: user.email,
+          type: reportType,
+          name: vehicleStationName,
+          notes: notes || 'No Notes',
+          count: inspectorCount,
+          time: dayjs().format('YYYY-MM-DD HH:mm:ss')
+        };
+        await fetch('http://localhost:3000/newReport', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newReport)
+        });
+        // if report is succesful, open a success modal for 3 seconds
+          setSuccessfulReportModal(true); 
+          setTimeout(() => {
+            setSuccessfulReportModal(false); 
+          }, 3000);
+      } catch (err) {
+        console.error(err);
+      }
     }
-  }
-
+    
 
   //update the color of the status based on the number of inspectors
   const getStatusColor = () => {
@@ -523,6 +530,60 @@ const Map = () => {
           <Button onClick={viewReports}>View reports</Button>
       </Box>
       </Grid>
+
+      {/* modal that appears for 3 seconds if a banned user tries making a new report */}
+      <Modal
+        open={banModalOpen}
+        onClose={() => setBanModalOpen(false)}
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'white',
+          color: 'red',
+          border: '2px solid #000',
+          boxShadow: 24,
+          p: 4,
+          borderRadius: 2,
+          textAlign: 'center'
+        }}>
+          <Typography sx={{mb: 2}}>
+            🚫 You are banned from making new reports!
+          </Typography>
+          <Typography>
+            Reason: {banReason}
+          </Typography>
+        </Box>
+      </Modal>
+
+      {/* modal for when a user successfully submits a report */}
+      <Modal
+        open={successfulReportModal}
+        onClose={() => setSuccessfulReportModal(false)}
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'white',
+          border: '2px solid #000',
+          boxShadow: 24,
+          color: 'green',
+          p: 4,
+          borderRadius: 2,
+          textAlign: 'center'
+        }}>
+          <Typography>
+            ✅ Report successfully submitted!
+          </Typography>
+        </Box>
+      </Modal>
+
     </div>
   );
 };
