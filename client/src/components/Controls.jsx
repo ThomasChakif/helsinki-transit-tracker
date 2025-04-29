@@ -20,7 +20,7 @@ const Controls = ({
     return (
       <Grid container spacing={2} direction={"row"} justifyContent={"space-evenly"} alignItems={"center"} textAlign={'center'} sx={{maxWidth: '80%'}}>
         {toggles.map(toggle => (
-          <Grid size={3}>
+          <Grid size={3} key={toggle.id}>
             <label key={toggle.id}>
               <Checkbox sx={{color:'white'}}
                 defaultChecked={toggle.checked} label={`${toggle.label}`} onChange={() => onToggle(toggle.id)}
