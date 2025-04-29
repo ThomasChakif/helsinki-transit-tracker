@@ -354,6 +354,7 @@ const Map = () => {
     // the following div deals with the Google OAuth. If show login button is true (not signed in yet), we display the button and allow users to sign in
     // if it's false, we display the signed-in user's name and a sign out button
     <div>
+      <Stack direction={'column'} spacing={'2'} alignItems={'center'}>
       <div className="auth-container">
         {showLoginButton ? (
           <button 
@@ -380,7 +381,7 @@ const Map = () => {
         className='mapcontainer'
         center={DEFAULT_POSITION}
         zoom={DEFAULT_ZOOM}
-        style={{ height: "850px", width: "100%" }}
+        style={{ height: "850px", width: "75%", borderRadius: "25px"}}
       >
         <TileLayer
           url={TILE_LAYER.url}
@@ -585,6 +586,7 @@ const Map = () => {
           </Typography>
         </Box>
       </Modal>
+    </Stack>
     </div>
   );
 };
