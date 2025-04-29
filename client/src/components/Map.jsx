@@ -20,6 +20,7 @@ const style = {
   width: 400,
   bgcolor: 'white',
   border: '2px solid #000',
+  borderRadius: '12px',
   boxShadow: 24,
   p: 4,
   margin: '20px',
@@ -30,6 +31,7 @@ const style2 = {
   width: 400,
   bgcolor: 'white',
   border: '2px solid #000',
+  borderRadius: '12px',
   boxShadow: 24,
   p: 4,
   margin: '20px',
@@ -339,7 +341,7 @@ const Map = () => {
           className='mapcontainer'
           center={DEFAULT_POSITION}
           zoom={DEFAULT_ZOOM}
-          style={{ height: "850px", width: "75%"}}
+          style={{ height: "850px", width: "75%", borderRadius:"15px"}}
         >
           <TileLayer
             url={TILE_LAYER.url}
@@ -454,7 +456,7 @@ const Map = () => {
               <TextField style={{marginBottom: '20px', width: '400px'}} label="Notes (optional)" onChange={event => setNotes(event.target.value)}/>
             </Stack>
             <Button onClick={addReport}>Submit report</Button>
-        </Box>
+          </Box>
           )}
           <Box sx = {style}>
             <h3 className='newReportH3'>View the results of the 5 most recent reports for a station or vehicle</h3>
