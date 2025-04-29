@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "helsinki-transit-tracker-01": "file:",
     "leaflet": "^1.9.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

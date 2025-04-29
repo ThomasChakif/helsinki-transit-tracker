@@ -20,6 +20,7 @@ const style = {
   width: 400,
   bgcolor: 'white',
   border: '2px solid #000',
+  borderRadius: '12px',
   boxShadow: 24,
   p: 4,
   margin: '20px',
@@ -30,6 +31,7 @@ const style2 = {
   width: 400,
   bgcolor: 'white',
   border: '2px solid #000',
+  borderRadius: '12px',
   boxShadow: 24,
   p: 4,
   margin: '20px',
@@ -583,7 +585,6 @@ const Map = () => {
           </Typography>
         </Box>
       </Modal>
-
     </div>
   );
 };
