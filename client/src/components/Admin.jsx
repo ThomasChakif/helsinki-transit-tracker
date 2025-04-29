@@ -1,18 +1,34 @@
-import { useState, useEffect, useMemo } from 'react'
-import {Snackbar, MenuItem } from '@mui/material'
-import { MaterialReactTable } from 'material-react-table'
+import {useState, useEffect, useMemo} from 'react'
+import {Snackbar, MenuItem, TextField, Box, Button, Stack, Modal, Typography} from '@mui/material'
+import {MaterialReactTable} from 'material-react-table'
 import DeleteIcon from '@mui/icons-material/Delete'
 import DeleteModal from './DeleteModal'
+import DeleteBanModal from './DeleteBanModal'
 import './Admin.css'
+import dayjs from 'dayjs'
+
+const style = {
+  position: 'absolute',
+  width: 400,
+  bgcolor: 'white',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  margin: '20px',
+  left: '50%',
+  transform: 'translate(-50%)',
+};
 
 function Admin() {
-  const [applications, setApplications] = useState([])
-  const [selectedTransaction, setSelectedTransaction] = useState()
-  const [transactionDeleteModalOpen, setTransactionDeleteModalOpen] = useState(false)
+  // initialize all variables
+  const [reports, setReports] = useState([])
+  const [bans, setBans] = useState([])
+  const [selectedReport, setSelectedReport] = useState()
+  const [selectedBan, setSelectedBan] = useState()
+  const [reportDeleteModalOpen, setReportDeleteModalOpen] = useState(false)
+  const [banDeleteModalOpen, setBanDeleteModalOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
-
-  const handleModalOpen = () => setTransactionModalOpen(true)
-  const handleSnackbarClose = () => setSnackbarOpen(false)
+  const handleSnackbarClose = () => setSnackbarOpen(false) //used to handle errors
 
   const [vehicleResults, setVehicleResults] = useState(0)
   const [stationResults, setStationResults] = useState(0)
@@ -21,6 +37,58 @@ function Admin() {
   const [topVehicleCount, setTopVehicleCount] = useState(0)
   const [todaysVotes, setTodaysVotes] = useState(0)
 
+  const [banNotes, setBanNotes] = useState("");
+  const [banEmail, setBanEmail] = useState("");
+
+  const [successfulBanModal, setSuccessfulBanModal] = useState(false);
+  const [alreadyBannedModal, setAlreadyBannedModal] = useState(false);
+
+
+
+  const banUser = async() => {
+      if(!banEmail || !banNotes) { //must insert user and reason for ban
+        alert('Please fill out both user email and reason for ban.');
+        return;
+      }
+
+      //check if the user is already banned so that we don't ban someone twice
+      const isAlreadyBanned = bans.find(ban => ban.user_email.trim().toLowerCase() === banEmail.trim().toLowerCase());
+      if (isAlreadyBanned) {
+        //if a user is already banned, alert the admin with a modal for 3 seconds
+        setAlreadyBannedModal(true); 
+        setTimeout(() => {
+          setAlreadyBannedModal(false); 
+        }, 3000);
+        return;
+      }
+
+      //structure response to database
+      try{
+        const newBan = {
+          email: banEmail,
+          notes: banNotes,
+          time: dayjs().format('YYYY-MM-DD HH:mm:ss')
+        }
+        //submit new ban
+        await fetch('http://localhost:3000/newBan', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newBan)
+        })
+        await getBans()
+        //successful ban, alert admin with modal 
+        setSuccessfulBanModal(true); 
+        setTimeout(() => {
+          setSuccessfulBanModal(false); 
+        }, 3000);
+      }catch(err){
+        console.error(err)
+      }
+    }
+
+  //function to fetch the all time top vehicle with the most inspector reports
   const getTopVehicle = async () => {
     try {
       const resp = await fetch('http://localhost:3000/adminTopVehicle')
@@ -28,14 +96,15 @@ function Admin() {
         setSnackbarOpen(true)
       }
       const data = await resp.json()
-      setTopVehicleName(data[0]?.name ?? 'N/A')
-      setTopVehicleCount(data[0]?.average_inspectors ?? 'None')
+      setTopVehicleName(data[0]?.name ?? 'N/A') //set vehicle name
+      setTopVehicleCount(data[0]?.average_inspectors ?? 'None') //set vehicle avg inspectors
     } catch (err) {
       console.error(err)
       setSnackbarOpen(true)
     }
   }
  
+  //function to get the amount of reports made on the current day
   const getTodaysVotes = async () => {
     try {
       const resp = await fetch('http://localhost:3000/adminGetTodaysVotes')
@@ -50,20 +119,37 @@ function Admin() {
     }
   }
 
-  const getTransactions = async () => {
+  //function to get all reports so that they may be added to admin dashboard table
+  const getReports = async () => {
     try {
       const resp = await fetch('http://localhost:3000/admin')
       if (!resp.ok) {
         setSnackbarOpen(true)
       }
       const data = await resp.json()
-      setApplications(data)
+      setReports(data)
     } catch (err) {
       console.error(err)
       setSnackbarOpen(true)
     }
   }
 
+  //function to get the list of all banned users
+  const getBans = async() => {
+    try {
+      const resp = await fetch('http://localhost:3000/adminGetBans')
+      if (!resp.ok) {
+        setSnackbarOpen(true)
+      }
+      const data = await resp.json()
+      setBans(data)
+    }catch (err){
+      console.error(err)
+      setSnackbarOpen(true)
+    }
+  }
+
+  //function to get the average inspector count of the last 10 vehicle reports
   const getVehicleResults = async () => {
     try {
       const resp = await fetch('http://localhost:3000/adminVehicleResults')
@@ -71,13 +157,14 @@ function Admin() {
         setSnackbarOpen(true)
       }
       const data = await resp.json()
-      setVehicleResults(data[0]?.avg ?? 'N/A')
+      setVehicleResults(data[0]?.avg ?? 'N/A') //set the avg
     } catch (err) {
       console.error(err)
       setSnackbarOpen(true)
     }
   }
 
+  //function to get the average inspector count of the last 10 station reports
   const getStationResults = async () => {
     try {
       const resp = await fetch('http://localhost:3000/adminStationResults')
@@ -85,15 +172,17 @@ function Admin() {
         setSnackbarOpen(true)
       }
       const data = await resp.json()
-      setStationResults(data[0]?.avg ?? 'N/A')
+      setStationResults(data[0]?.avg ?? 'N/A') //set the average
     } catch (err) {
       console.error(err)
       setSnackbarOpen(true)
     }
   }
 
+  //call all functions to initialize data on admin dashboard. Having them all together is better for convenience on the deleteModal side
   const refreshAllData = () => {
-    getTransactions()
+    getReports()
+    getBans()
     getVehicleResults()
     getStationResults()
     getTopVehicle()
@@ -104,6 +193,27 @@ function Admin() {
     refreshAllData()
   }, [])
 
+  // structure the data in the banned users table
+  const banData = useMemo(() => [
+    {
+      accessorKey: 'ban_id',
+      header: 'Ban ID'
+    },
+    {
+      accessorKey: 'user_email',
+      header: 'Banned User'
+    },
+    {
+      accessorKey: 'ban_notes',
+      header: 'Reason for Ban'
+    },
+    {
+      accessorKey: 'ban_time',
+      header: 'Time of Ban'
+    }
+  ], [])
+  //initialize our table with the following attributes: 
+  //report ID, type, vehicle name, inspector count, notes, email of the user who submitted it, and when it was created
   const columns = useMemo(() => [
     {
       accessorKey: 'report_id',
@@ -139,19 +249,20 @@ function Admin() {
     <>
       <h1>Helsinki Transit Admin Dashboard</h1>
       
+      {/* containers for the different admin statistics boxes: today's reports, all-time vehicle, average of last 10 vehicle and station reports*/}
       <div className="stats-container">
         <h3>Admin Statistics</h3>
         <div className="stats-grid">
           <div className="stat-card">
             <div className="stat-title">Today's Reports</div>
             <div className="stat-value">{todaysVotes}</div>
-            <div className="stat-description">Reports submitted today</div>
+            <div className="stat-description">Report(s) submitted today</div>
           </div>
           
           <div className="stat-card">
             <div className="stat-title">Top Vehicle</div>
             <div className="stat-value">{topVehicleName}</div>
-            <div className="stat-description">Average of {topVehicleCount} inspectors per report</div>
+            <div className="stat-description">Average of {topVehicleCount} inspector(s) per report</div>
           </div>
           
           <div className="stat-card">
@@ -168,33 +279,116 @@ function Admin() {
         </div>
       </div>
       
+      {/* reports table, made up of the data found in reports and structured using columns */}
+      {/* admins can delete a report if they deem it necessary*/}
       <h3>All Reports</h3>
       <MaterialReactTable 
-        data={applications} 
+        data={reports} 
         columns={columns}
         enableRowActions
         renderRowActionMenuItems={({ row }) => [
           <MenuItem key='delete' onClick={() => {
-            setSelectedTransaction(row.original.report_id)
-            setTransactionDeleteModalOpen(true)
+            setSelectedReport(row.original.report_id)
+            setReportDeleteModalOpen(true)
           }}>
             <DeleteIcon style={{ marginRight: '8px' }}/>
             Delete
           </MenuItem>,
         ]}
       />
-      
-      <DeleteModal 
-        transactionID={selectedTransaction} 
-        transactionDeleteModalOpen={transactionDeleteModalOpen}
-        setTransactionDeleteModalOpen={setTransactionDeleteModalOpen}
-        getTransactions={getTransactions}
-        getVehicleResults={getVehicleResults}
-        getStationResults={getStationResults}
-        getTodaysVotes={getTodaysVotes}
-        getTopVehicle={getTopVehicle}
+
+        {/* react table to display all banned users */}
+      <h3>Banned Users</h3>
+      <MaterialReactTable 
+        data={bans} 
+        columns={banData}
+        enableRowActions
+        renderRowActionMenuItems={({ row }) => [
+          <MenuItem key='delete' onClick={() => {
+            setSelectedBan(row.original.ban_id)
+            setBanDeleteModalOpen(true)
+          }}>
+            Unban User
+          </MenuItem>,
+        ]}
       />
 
+      {/* form to ban a new user */}
+      <Box sx = {style}>
+          <h3 className='newReportH3'>Ban User</h3>
+            <Stack spacing={2}>
+                <TextField style={{marginBottom: '20px', width: '400px'}} label="User Email" onChange={event => setBanEmail(event.target.value)}/>
+                <TextField style={{marginBottom: '20px', width: '400px'}} label="Reason For Ban" onChange={event => setBanNotes(event.target.value)}/>
+            </Stack>
+            <Button onClick={banUser}>Ban User</Button>
+      </Box>
+
+      {/* modal for when an admin successfully bans a user */}
+      <Modal
+        open={successfulBanModal}
+        onClose={() => setSuccessfulBanModal(false)}
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'white',
+          border: '2px solid #000',
+          boxShadow: 24,
+          color: 'green',
+          p: 4,
+          borderRadius: 2,
+          textAlign: 'center'
+        }}>
+          <Typography>
+            ✅ User successfully banned!
+          </Typography>
+        </Box>
+      </Modal>
+
+      {/* modal for when an admin tries banning an already banned user */}
+      <Modal
+        open={alreadyBannedModal}
+        onClose={() => setAlreadyBannedModal(false)}
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 400,
+          bgcolor: 'white',
+          border: '2px solid #000',
+          boxShadow: 24,
+          color: 'red',
+          p: 4,
+          borderRadius: 2,
+          textAlign: 'center'
+        }}>
+          <Typography>
+            🚫 User is already banned. 
+          </Typography>
+        </Box>
+      </Modal>
+      
+      {/* delete modal when an admin deletes a report */}
+      <DeleteModal 
+        reportID={selectedReport} 
+        reportDeleteModalOpen={reportDeleteModalOpen}
+        setReportDeleteModalOpen={setReportDeleteModalOpen}
+        refreshAllData={refreshAllData}
+      />
+
+      <DeleteBanModal
+          banID={selectedBan} 
+          banDeleteModalOpen={banDeleteModalOpen}
+          setBanDeleteModalOpen={setBanDeleteModalOpen}
+          refreshAllData={refreshAllData}
+      />
+
+    {/* snackbar for handling errors */}
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         open={snackbarOpen}
