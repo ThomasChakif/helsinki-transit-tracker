@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
-import { 
+import {
   fetchTrainStations, fetchMetroStations, fetchTramStations, fetchLightRailStations,
-  fetchTrainRoutes, fetchMetroRoutes, fetchTramRoutes, fetchLightRailRoutes 
+  fetchTrainRoutes, fetchMetroRoutes, fetchTramRoutes, fetchLightRailRoutes
 } from '../api/transportApi';
 import TransportLayer from './TransportLayer';
 import Controls from './Controls';
-import {TextField, MenuItem, Box, Button, Stack, Grid, Modal, Typography} from '@mui/material'
+import { TextField, MenuItem, Box, Button, Stack, Grid, Modal, Typography } from '@mui/material'
 import { DEFAULT_POSITION, DEFAULT_ZOOM, TILE_LAYER, TRANSPORT_COLORS } from '../constants/mapConfig';
 import './Map.css';
 import dayjs from 'dayjs'
@@ -67,7 +67,7 @@ const Map = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   //we use these states for when a user wants to enable/disable different routes on the map
   const [layerVisibility, setLayerVisibility] = useState({
     trainStations: false,
@@ -92,31 +92,31 @@ const Map = () => {
   const [reportType, setReportType] = useState("");
   const [inspectorCount, setInspectorCount] = useState(0);
   const [notes, setNotes] = useState("");
-  
+
   const [bans, setBans] = useState([])
   const [banModalOpen, setBanModalOpen] = useState(false);
   const [successfulReportModal, setSuccessfulReportModal] = useState(false);
   const [banReason, setBanReason] = useState("");
 
-    //function to get the list of all banned users
-    const getBans = async() => {
-      try {
-        const resp = await fetch('http://localhost:3000/adminGetBans')
-        const data = await resp.json()
-        setBans(data)
-      }catch (err){
-        console.error(err)
-      }
+  //function to get the list of all banned users
+  const getBans = async () => {
+    try {
+      const resp = await fetch('http://localhost:3000/adminGetBans')
+      const data = await resp.json()
+      setBans(data)
+    } catch (err) {
+      console.error(err)
     }
+  }
 
   //function for checking the 5 most recent reports made today for a particular vehicle or station
-  const viewReports = async() => {
-    if(!vehicleStationNameToSearch) { //if no vehicle/station was chosen, alert the user to pick one
+  const viewReports = async () => {
+    if (!vehicleStationNameToSearch) { //if no vehicle/station was chosen, alert the user to pick one
       alert('Please fill out the vehicle/station name.');
       return;
     }
     // structure the reponse to send to the database
-    try{
+    try {
       const viewTheReports = {
         name: vehicleStationNameToSearch,
         todayDate: dayjs().format('YYYY-MM-DD'),
@@ -127,77 +127,77 @@ const Map = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
-        }, 
+        },
         body: JSON.stringify(viewTheReports)
       })
       const data = await response.json()
       setSearchResults(data[0]?.average ?? '0.00') //set average here
-    }catch(err){
+    } catch (err) {
       console.error(err)
     }
   }
 
-    //function for adding in a new report
-    const addReport = async () => {
-      if(!vehicleStationName || !reportType) {
-        alert('Please fill out all required fields.');
-        return;
-      } else if(inspectorCount >= 10){
-        alert('Inspector count must not be more than 10.');
-        return;
-      }
-    
-      await getBans();
-      const userEmail = user.email;
-      const bannedUser = bans.find(ban => ban.user_email.trim().toLowerCase() === userEmail.trim().toLowerCase());
-      
-      //if a user is banned, open up a modal for 3 seconds that lets them know they can't make a report
-      if (bannedUser) {
-        setBanReason(bannedUser.ban_notes); 
-        setBanModalOpen(true); 
-        setTimeout(() => {
-          setBanModalOpen(false); 
-        }, 3000);
-        return;
-      }
-    
-      try {
-        const newReport = {
-          email: user.email,
-          type: reportType,
-          name: vehicleStationName,
-          notes: notes || 'No Notes',
-          count: inspectorCount,
-          time: dayjs().format('YYYY-MM-DD HH:mm:ss')
-        };
-        await fetch('http://localhost:3000/newReport', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newReport)
-        });
-        // if report is succesful, open a success modal for 3 seconds
-          setSuccessfulReportModal(true); 
-          setTimeout(() => {
-            setSuccessfulReportModal(false); 
-          }, 3000);
-      } catch (err) {
-        console.error(err);
-      }
+  //function for adding in a new report
+  const addReport = async () => {
+    if (!vehicleStationName || !reportType) {
+      alert('Please fill out all required fields.');
+      return;
+    } else if (inspectorCount >= 10) {
+      alert('Inspector count must not be more than 10.');
+      return;
     }
-    
+
+    await getBans();
+    const userEmail = user.email;
+    const bannedUser = bans.find(ban => ban.user_email.trim().toLowerCase() === userEmail.trim().toLowerCase());
+
+    //if a user is banned, open up a modal for 3 seconds that lets them know they can't make a report
+    if (bannedUser) {
+      setBanReason(bannedUser.ban_notes);
+      setBanModalOpen(true);
+      setTimeout(() => {
+        setBanModalOpen(false);
+      }, 3000);
+      return;
+    }
+
+    try {
+      const newReport = {
+        email: user.email,
+        type: reportType,
+        name: vehicleStationName,
+        notes: notes || 'No Notes',
+        count: inspectorCount,
+        time: dayjs().format('YYYY-MM-DD HH:mm:ss')
+      };
+      await fetch('http://localhost:3000/newReport', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newReport)
+      });
+      // if report is succesful, open a success modal for 3 seconds
+      setSuccessfulReportModal(true);
+      setTimeout(() => {
+        setSuccessfulReportModal(false);
+      }, 3000);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
 
   //update the color of the status based on the number of inspectors
   const getStatusColor = () => {
     const numValue = parseFloat(searchResults)
-    if (numValue === 0){
+    if (numValue === 0) {
       return 'green'
-    }else if (numValue > 0.0 && numValue < 2.0){
+    } else if (numValue > 0.0 && numValue < 2.0) {
       return '#D5B60A'
-    }else if (numValue >= 2.0 && numValue < 4.0){
+    } else if (numValue >= 2.0 && numValue < 4.0) {
       return 'orange'
-    }else if (numValue >= 4.0){
+    } else if (numValue >= 4.0) {
       return 'red'
-    }else {
+    } else {
       return 'black'
     }
   }
@@ -205,15 +205,15 @@ const Map = () => {
   //update the text of the status based on the number of inspectors
   const getStatusText = () => {
     const numValue = parseFloat(searchResults)
-    if (numValue === 0){
+    if (numValue === 0) {
       return 'STATUS: SAFE'
-    }else if (numValue > 0.0 && numValue < 2.0){
+    } else if (numValue > 0.0 && numValue < 2.0) {
       return 'STATUS: LOW RISK'
-    }else if (numValue >= 2.0 && numValue < 4.0){
+    } else if (numValue >= 2.0 && numValue < 4.0) {
       return 'STATUS: CAUTION'
-    }else if (numValue >= 4.0){
+    } else if (numValue >= 4.0) {
       return 'STATUS: High Alert'
-    }else{
+    } else {
       return 'STATUS: N/A'
     }
   }
@@ -245,7 +245,7 @@ const Map = () => {
       await setPersistence(auth, browserSessionPersistence);
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      
+
       //set user info
       const user = result.user;
       setUser(user);
@@ -319,15 +319,15 @@ const Map = () => {
         setIsLoading(false);
       }
     };
-    
+
     loadData();
   }, []);
 
   //get all vehicle and station names and types from json file
   useEffect(() => {
     fetch('../../vehicleAndStationData/vehicleStationData.json')
-    .then(res => res.json())
-    .then(data => setVehicleStationData(data.data))
+      .then(res => res.json())
+      .then(data => setVehicleStationData(data.data))
   })
 
   //togglt the handler
@@ -354,239 +354,239 @@ const Map = () => {
     // the following div deals with the Google OAuth. If show login button is true (not signed in yet), we display the button and allow users to sign in
     // if it's false, we display the signed-in user's name and a sign out button
     <div>
-      <Stack direction={'column'} spacing={'2'} alignItems={'center'}>
-      <div className="auth-container">
-        {showLoginButton ? (
-          <button 
-            id="google-login-btn" 
-            className="google-button" 
-            onClick={handleGoogleSignIn}
-          >
-            <i className="fab fa-google"></i> Login With Google
-          </button>
-        ) : (
-          <div id="displayUserInfo" className="user-info">
-            <p id="userName">Hi, {user?.displayName}</p>
-            <button id="sign-out-btn" onClick={handleSignOut}>Sign Out</button>
-          </div>
-        )}
-      </div>
-      
-      {isLoading && <p>Loading data...</p>}
-      {error && <p className="error">{error}</p>}
-      
-      <Controls toggles={toggleControls} onToggle={handleToggle} />
+      <Stack direction={'column'} spacing={2} alignItems={'center'}>
+        <div className="auth-container">
+          {showLoginButton ? (
+            <button
+              id="google-login-btn"
+              className="google-button"
+              onClick={handleGoogleSignIn}
+            >
+              <i className="fab fa-google"></i> Login With Google
+            </button>
+          ) : (
+            <div id="displayUserInfo" className="user-info">
+              <p id="userName">Hi, {user?.displayName}</p>
+              <button id="sign-out-btn" onClick={handleSignOut}>Sign Out</button>
+            </div>
+          )}
+        </div>
 
-      <MapContainer 
-        className='mapcontainer'
-        center={DEFAULT_POSITION}
-        zoom={DEFAULT_ZOOM}
-        style={{ height: "850px", width: "75%", borderRadius: "25px"}}
-      >
-        <TileLayer
-          url={TILE_LAYER.url}
-          attribution={TILE_LAYER.attribution}
-          maxZoom={TILE_LAYER.maxZoom}
-        />
+        {isLoading && <p>Loading data...</p>}
+        {error && <p className="error">{error}</p>}
 
-        {/* Metro layers */}
-        {layerVisibility.metroRoutes && (
-          <TransportLayer 
-            type="metro" 
-            data={transportData.routes.metro} 
-            isRoute={true} 
-            color={TRANSPORT_COLORS.SUBWAY} 
-          />
-        )}
-        {layerVisibility.metroStations && (
-          <TransportLayer 
-            type="metro" 
-            data={transportData.stations.metro} 
-          />
-        )}
+        <Controls toggles={toggleControls} onToggle={handleToggle} />
 
-        {/* Train layers */}
-        {layerVisibility.trainRoutes && (
-          <TransportLayer 
-            type="train" 
-            data={transportData.routes.train} 
-            isRoute={true} 
-            color={TRANSPORT_COLORS.RAIL} 
+        <MapContainer
+          className='mapcontainer'
+          center={DEFAULT_POSITION}
+          zoom={DEFAULT_ZOOM}
+          style={{ height: "850px", width: "75%", borderRadius: "20px", margin: "12px" }}
+        >
+          <TileLayer
+            url={TILE_LAYER.url}
+            attribution={TILE_LAYER.attribution}
+            maxZoom={TILE_LAYER.maxZoom}
           />
-        )}
-        {layerVisibility.trainStations && (
-          <TransportLayer 
-            type="train" 
-            data={transportData.stations.train} 
-          />
-        )}
 
-        {/* Tram layers */}
-        {layerVisibility.tramRoutes && (
-          <TransportLayer 
-            type="tram" 
-            data={transportData.routes.tram} 
-            isRoute={true} 
-            color={TRANSPORT_COLORS.TRAM} 
-          />
-        )}
-        {layerVisibility.tramStations && (
-          <TransportLayer 
-            type="tram" 
-            data={transportData.stations.tram} 
-          />
-        )}
+          {/* Metro layers */}
+          {layerVisibility.metroRoutes && (
+            <TransportLayer
+              type="metro"
+              data={transportData.routes.metro}
+              isRoute={true}
+              color={TRANSPORT_COLORS.SUBWAY}
+            />
+          )}
+          {layerVisibility.metroStations && (
+            <TransportLayer
+              type="metro"
+              data={transportData.stations.metro}
+            />
+          )}
 
-        {/* Light Rail layers */}
-        {layerVisibility.lightRailRoutes && (
-          <TransportLayer 
-            type="lightRail" 
-            data={transportData.routes.lightRail} 
-            isRoute={true} 
-            color={TRANSPORT_COLORS.LIGHTRAIL} 
-          />
-        )}
-        {layerVisibility.lightRailStations && (
-          <TransportLayer 
-            type="lightRail" 
-            data={transportData.stations.lightRail} 
-          />
-        )}
-      </MapContainer>
+          {/* Train layers */}
+          {layerVisibility.trainRoutes && (
+            <TransportLayer
+              type="train"
+              data={transportData.routes.train}
+              isRoute={true}
+              color={TRANSPORT_COLORS.RAIL}
+            />
+          )}
+          {layerVisibility.trainStations && (
+            <TransportLayer
+              type="train"
+              data={transportData.stations.train}
+            />
+          )}
+
+          {/* Tram layers */}
+          {layerVisibility.tramRoutes && (
+            <TransportLayer
+              type="tram"
+              data={transportData.routes.tram}
+              isRoute={true}
+              color={TRANSPORT_COLORS.TRAM}
+            />
+          )}
+          {layerVisibility.tramStations && (
+            <TransportLayer
+              type="tram"
+              data={transportData.stations.tram}
+            />
+          )}
+
+          {/* Light Rail layers */}
+          {layerVisibility.lightRailRoutes && (
+            <TransportLayer
+              type="lightRail"
+              data={transportData.routes.lightRail}
+              isRoute={true}
+              color={TRANSPORT_COLORS.LIGHTRAIL}
+            />
+          )}
+          {layerVisibility.lightRailStations && (
+            <TransportLayer
+              type="lightRail"
+              data={transportData.stations.lightRail}
+            />
+          )}
+        </MapContainer>
 
         {/* grid for new report box and view report box */}
-      <Grid container direction="row" 
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* only display in new report form if a user is signed in */}
-        {user && (
-          <Box sx = {style2}>
-          <h3 className='newReportH3'>Make a new report</h3>
-          <Stack spacing={2}>
-            <TextField
-              style={{marginBottom: '20px', width: '400px'}}
-              select
-              label = 'Select a vehicle or station'
-              variant = 'outlined'
-              required
-              value = {vehicleStationName}
-              onChange = {(event) => {
-                //first set the name 
-                const selectedPlatform = vehicleStationData.find(platform => platform.name === event.target.value)
-                setVehicleStationName(event.target.value)
-                // then use the json data to find the type (vehicle or station)
-                const rt = selectedPlatform?.type;
-                setReportType(rt)
-              }}
-            >
-              {/* have a dropdown menu of all vehicle/station names */}
-              {vehicleStationData.map((vsData) => (
-                <MenuItem key={vsData.name} value={vsData.name}>
-                  {vsData.name}
-                </MenuItem>
-              ))}
-            </TextField>
-            {/* report the number of inspectors (minimum 0, must be whole positive numbers) */}
-            <TextField style={{marginBottom: '20px', width: '400px'}} required label="Number of inspectors" type="text" value={inspectorCount} onChange={event => {
-              const ic = event.target.value
-              if (/^\d*$/.test(ic)) { // regex to allow only whole numbers
-                setInspectorCount(ic)
-              }
-            }}
-            />
-            {/* optional notes */}
-            <TextField style={{marginBottom: '20px', width: '400px'}} label="Notes (optional)" onChange={event => setNotes(event.target.value)}/>
-          </Stack>
-          <Button onClick={addReport}>Submit report</Button>
-      </Box>
-        )}
-        {/* used to view reports for a station or vehicle */}
-        <Box sx = {style}>
-          <h3 className='newReportH3'>View the results of the 5 most recent reports for a station or vehicle</h3>
-          <Stack spacing={2}>
-            <TextField
-              style={{marginBottom: '20px', width: '400px'}}
-              select
-              label = 'Select a vehicle or station'
-              variant = 'outlined'
-              required
-              value = {vehicleStationNameToSearch}
-              onChange = {(event) => {
-                //set the name of the vehcile or station to search
-                setVehicleStationNameToSearch(event.target.value)
-              }}
-            >
-              {/* have a dropdown menu of all vehicle/station names */}
-              {vehicleStationData.map((vsData) => (
-                <MenuItem key={vsData.name} value={vsData.name}>
-                  {vsData.name}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Stack>
-          {/* update the status text and color depending on the results of the 5 most recent votes */}
-          <p style={{color: getStatusColor()}}>{getStatusText()}</p>
-          <p style={{color: 'black'}}>Of the 5 most recent votes from today, the average amount of reported inspectors is: {searchResults}</p>
-          <Button onClick={viewReports}>View reports</Button>
-      </Box>
-      </Grid>
+        <Grid container direction="row"
+          sx={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* only display in new report form if a user is signed in */}
+          {user && (
+            <Box sx={style2}>
+              <h3 className='newReportH3'>Make a new report</h3>
+              <Stack spacing={2}>
+                <TextField
+                  style={{ marginBottom: '20px', width: '400px' }}
+                  select
+                  label='Select a vehicle or station'
+                  variant='outlined'
+                  required
+                  value={vehicleStationName}
+                  onChange={(event) => {
+                    //first set the name 
+                    const selectedPlatform = vehicleStationData.find(platform => platform.name === event.target.value)
+                    setVehicleStationName(event.target.value)
+                    // then use the json data to find the type (vehicle or station)
+                    const rt = selectedPlatform?.type;
+                    setReportType(rt)
+                  }}
+                >
+                  {/* have a dropdown menu of all vehicle/station names */}
+                  {vehicleStationData.map((vsData) => (
+                    <MenuItem key={vsData.name} value={vsData.name}>
+                      {vsData.name}
+                    </MenuItem>
+                  ))}
+                </TextField>
+                {/* report the number of inspectors (minimum 0, must be whole positive numbers) */}
+                <TextField style={{ marginBottom: '20px', width: '400px' }} required label="Number of inspectors" type="text" value={inspectorCount} onChange={event => {
+                  const ic = event.target.value
+                  if (/^\d*$/.test(ic)) { // regex to allow only whole numbers
+                    setInspectorCount(ic)
+                  }
+                }}
+                />
+                {/* optional notes */}
+                <TextField style={{ marginBottom: '20px', width: '400px' }} label="Notes (optional)" onChange={event => setNotes(event.target.value)} />
+              </Stack>
+              <Button onClick={addReport}>Submit report</Button>
+            </Box>
+          )}
+          {/* used to view reports for a station or vehicle */}
+          <Box sx={style}>
+            <h3 className='newReportH3'>View the results of the 5 most recent reports for a station or vehicle</h3>
+            <Stack spacing={2}>
+              <TextField
+                style={{ marginBottom: '20px', width: '400px' }}
+                select
+                label='Select a vehicle or station'
+                variant='outlined'
+                required
+                value={vehicleStationNameToSearch}
+                onChange={(event) => {
+                  //set the name of the vehcile or station to search
+                  setVehicleStationNameToSearch(event.target.value)
+                }}
+              >
+                {/* have a dropdown menu of all vehicle/station names */}
+                {vehicleStationData.map((vsData) => (
+                  <MenuItem key={vsData.name} value={vsData.name}>
+                    {vsData.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Stack>
+            {/* update the status text and color depending on the results of the 5 most recent votes */}
+            <p style={{ color: getStatusColor() }}>{getStatusText()}</p>
+            <p style={{ color: 'black' }}>Of the 5 most recent votes from today, the average amount of reported inspectors is: {searchResults}</p>
+            <Button onClick={viewReports}>View reports</Button>
+          </Box>
+        </Grid>
 
-      {/* modal that appears for 3 seconds if a banned user tries making a new report */}
-      <Modal
-        open={banModalOpen}
-        onClose={() => setBanModalOpen(false)}
-      >
-        <Box sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 400,
-          bgcolor: 'white',
-          color: 'red',
-          border: '2px solid #000',
-          boxShadow: 24,
-          p: 4,
-          borderRadius: 2,
-          textAlign: 'center'
-        }}>
-          <Typography sx={{mb: 2}}>
-            🚫 You are banned from making new reports!
-          </Typography>
-          <Typography>
-            Reason: {banReason}
-          </Typography>
-        </Box>
-      </Modal>
+        {/* modal that appears for 3 seconds if a banned user tries making a new report */}
+        <Modal
+          open={banModalOpen}
+          onClose={() => setBanModalOpen(false)}
+        >
+          <Box sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'white',
+            color: 'red',
+            border: '2px solid #000',
+            boxShadow: 24,
+            p: 4,
+            borderRadius: 2,
+            textAlign: 'center'
+          }}>
+            <Typography sx={{ mb: 2 }}>
+              🚫 You are banned from making new reports!
+            </Typography>
+            <Typography>
+              Reason: {banReason}
+            </Typography>
+          </Box>
+        </Modal>
 
-      {/* modal for when a user successfully submits a report */}
-      <Modal
-        open={successfulReportModal}
-        onClose={() => setSuccessfulReportModal(false)}
-      >
-        <Box sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 400,
-          bgcolor: 'white',
-          border: '2px solid #000',
-          boxShadow: 24,
-          color: 'green',
-          p: 4,
-          borderRadius: 2,
-          textAlign: 'center'
-        }}>
-          <Typography>
-            ✅ Report successfully submitted!
-          </Typography>
-        </Box>
-      </Modal>
-    </Stack>
+        {/* modal for when a user successfully submits a report */}
+        <Modal
+          open={successfulReportModal}
+          onClose={() => setSuccessfulReportModal(false)}
+        >
+          <Box sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'white',
+            border: '2px solid #000',
+            boxShadow: 24,
+            color: 'green',
+            p: 4,
+            borderRadius: 2,
+            textAlign: 'center'
+          }}>
+            <Typography>
+              ✅ Report successfully submitted!
+            </Typography>
+          </Box>
+        </Modal>
+      </Stack>
     </div>
   );
 };

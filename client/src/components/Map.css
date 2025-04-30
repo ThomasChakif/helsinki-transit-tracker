@@ -5,8 +5,6 @@
 
 .mapcontainer{
     display: inline-block;
-    padding: 12px;
-    margin: 8px;
 }
 
 #google-login-btn{
