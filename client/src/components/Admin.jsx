@@ -8,10 +8,11 @@ import './Admin.css'
 import dayjs from 'dayjs'
 
 const style = {
-  position: 'absolute',
+  position: 'relative',
   width: 400,
   bgcolor: 'white',
   border: '2px solid #000',
+  borderRadius: '12px',
   boxShadow: 24,
   p: 4,
   margin: '20px',
