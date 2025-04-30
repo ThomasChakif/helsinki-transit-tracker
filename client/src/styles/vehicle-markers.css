@@ -1,0 +1,60 @@
+.metro-marker {
+    background: transparent;
+  }
+  
+  .metro-icon {
+    background-color: orange;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    transform-origin: center;
+  }
+  
+  .tram-marker {
+    background: transparent;
+  }
+  
+  .tram-icon {
+    background-color: green;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    transform-origin: center;
+  }
+  
+  .train-marker {
+    background: transparent;
+  }
+  
+  .train-icon {
+    background-color: purple;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    transform-origin: center;
+  }
+  
+  .connection-status {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 4px;
+    z-index: 1000;
+  }

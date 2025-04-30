@@ -1,4 +1,4 @@
-import Map from './components/Map';
+import Map from './components/Map2';
 import Admin from './components/Admin';
 import AppHeader from './components/AppHeader';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';

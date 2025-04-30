@@ -1,22 +1,70 @@
 import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
-
+import { createServer } from 'http'
+import { Server } from 'socket.io'
+import mqtt from 'mqtt'
 import { query } from './db/postgres.js'
 
-//create the app
+// create the app
 const app = express()
 
-//set the port
+// set the port
 app.set('port', 3000)
 
-//set up some middleware
-//set up some can read the body requests
+// set up some middleware
 app.use(express.json())
-//middleware to make requests happen from client/frontend
 app.use(cors())
 
-//base route
+// add http server so we can use socketIo
+const server = createServer(app);
+
+// initialize socketIo
+const io = new Server(server, {
+  cors: {
+    origin: '*',  // In production, limit this to your frontend URL
+    methods: ['GET', 'POST']
+  }
+});
+
+// Connect to HSL Broker for vehicle positions
+const mqttClient = mqtt.connect('mqtts://mqtt.hsl.fi:8883')
+
+// Filter the metro train and tram positions:
+mqttClient.on('connect', () => {
+  console.log('Connected to HSL Mqtt')
+  mqttClient.subscribe('/hfp/v2/journey/ongoing/vp/metro/#');
+  mqttClient.subscribe('/hfp/v2/journey/ongoing/vp/train/#');
+  mqttClient.subscribe('/hfp/v2/journey/ongoing/vp/tram/#');
+})
+
+// Find the Vehicle Position keys from the messages
+mqttClient.on('message', (topic, message) => {
+  try {
+    const messageObj = JSON.parse(message.toString())
+    // deconstruct the message to get the VP key 
+    const vpKey = Object.keys(messageObj).find(key => key === 'VP')
+
+    // if the data exists, send it through socketio
+    if (vpKey && messageObj[vpKey]) {
+      const vehicleData = messageObj[vpKey];
+      // send to all connected clients
+      io.emit('vehicleUpdate', {topic, data: vehicleData})
+    }
+  } catch (error) {
+    console.log(error, 'Error parsing MQTT data')
+  }
+});
+
+// SocketIO handler 
+io.on("connection", (socket) => {
+  console.log("SocketIO client connected")
+  socket.on("disconnect", () => {
+    console.log("SocketIO client disconnected")
+  })
+})
+
+// base route
 app.get('/', (req, res) => {
     res.send('Welcome to the helsinki transit tracker')
 })
@@ -147,7 +195,7 @@ app.delete('/adminUnban/:id', (req, res) => {
   }
 }) 
 
-app.listen(app.get('port'), () => {
+server.listen(app.get('port'), () => {
     console.log('App listening on http://localhost:3000')
     console.log('Press Ctrl+C to stop')
 })

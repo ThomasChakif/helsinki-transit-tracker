@@ -274,15 +274,15 @@ const SimpleMap = () => {
   const [tramRoutes, setTramRoutes] = useState([])
   const [lightRailRoutes, setLightRailRoutes] = useState([])
 
-  const [showTrainStations, setShowTrainStations] = useState(false)
-  const [showMetroStations, setShowMetroStations] = useState(false)
-  const [showTramStations, setShowTramStations] = useState(false)
-  const [showLightRailStations, setShowLightRailStations] = useState(false)
+  const [showTrainStations, setShowTrainStations] = useState(true)
+  const [showMetroStations, setShowMetroStations] = useState(true)
+  const [showTramStations, setShowTramStations] = useState(true)
+  const [showLightRailStations, setShowLightRailStations] = useState(true)
 
-  const [showMetroRoutes, setShowMetroRoutes] = useState(false)
-  const [showTrainRoutes, setShowTrainRoutes] = useState(false)
+  const [showMetroRoutes, setShowMetroRoutes] = useState(true)
+  const [showTrainRoutes, setShowTrainRoutes] = useState(true)
   const [showTramRoutes, setShowTramRoutes] = useState(true)
-  const [showLightRailRoutes, setShowLightRailRoutes] = useState(false)
+  const [showLightRailRoutes, setShowLightRailRoutes] = useState(true)
 
   useEffect(() => {
     const loadData = async () => {
