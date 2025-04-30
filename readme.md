@@ -37,9 +37,9 @@ You must have node.js running on your machine. Once you have cloned this project
 #### Server
 You must have node.js running on your machine. Once you have cloned this project you can run `npm install` to install all of the packages for this project. Then running `npm run dev` will run the dev version of this code, which will run this project with nodemon. 
 
-.env database configuration information:
-POSTGRES_USERNAME=postgres
-POSTGRES_PASSWORD=thc225_lehigh
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-POSTGRES_DBNAME=helsinki-metro-tracker
+* .env database configuration information:
+  * POSTGRES_USERNAME=postgres
+  * POSTGRES_PASSWORD=thc225_lehigh
+  * POSTGRES_HOST=localhost
+  * POSTGRES_PORT=5432
+  * POSTGRES_DBNAME=helsinki-metro-tracker
