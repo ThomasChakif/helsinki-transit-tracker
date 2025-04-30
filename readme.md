@@ -35,4 +35,11 @@ The client for this project uses React.
 You must have node.js running on your machine. Once you have cloned this project you can run `npm install` to install all of the packages for this project. Then running `npm run dev` will run the dev version of this code, which will run this project on localhost:5173 (or at the location specified in the console).
 
 #### Server
-You must have node.js running on your machine. Once you have cloned this project you can run `npm install` to install all of the packages for this project. Then running `npm run dev` will run the dev version of this code, which will run this project with nodemon. We chose to use our own postgres database for this project, so you'll encounter an error when running `npm run dev` since there won't be a .env file with the database configuration. If needed for testing/grading, please contact us.
+You must have node.js running on your machine. Once you have cloned this project you can run `npm install` to install all of the packages for this project. Then running `npm run dev` will run the dev version of this code, which will run this project with nodemon. 
+
+.env database configuration information:
+POSTGRES_USERNAME=postgres
+POSTGRES_PASSWORD=thc225_lehigh
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DBNAME=helsinki-metro-tracker
