@@ -3,6 +3,8 @@
 
 ### Project Description
 * Our Helsinki Transit Tracker is a React-based web app designed to help users track public transportation in the city of Helsinki, as well as make/view reports made regarding ticket inspectors on various vehicles and stations. 
+![Home page](https://github.com/cse264/finalproject-fullstack-ThomasChakif/blob/main/img/htt-homepage.png)
+![Admin page](https://github.com/cse264/finalproject-fullstack-ThomasChakif/blob/main/img/htt-admin.png)
 
 ### Project Specifications
 * User Accounts & Roles: there are 3 different roles for this project: users, authorized users, and admins. Users can view the vehicle map and view the 5 most recent votes for a particular station or vehicle, authorized users can do the same as well as make a new report on a vehicle or station, and admins have access to an admin dashboard (/admin) that display statistics about recent reports as well as a table of all reports and all banned users. Admins can delete any reports, as well as ban/unban users. Banned users can still view reports, but cannot make new reports. Users are authorized using Google OAuth through Firebase.
@@ -11,7 +13,7 @@
 !['reports' columns](https://github.com/cse264/finalproject-fullstack-ThomasChakif/blob/main/img/reports.png)
 !['user_bans' columns](https://github.com/cse264/finalproject-fullstack-ThomasChakif/blob/main/img/bans.png)
 * Interactive UI: our app features a live map of all trams, trains, and vehicles within Helsinki. Users can choose to enable or disable any of these routes. Our app uses React-based elements (Box, Grid, Material React Table, etc.) and a simple color-scheme to provide an engaging and simple user experience. 
-* New Library or Framework: to handle the mapping on the home page, we incorporated Leaflet into our app. We also used an MQTT protocol to help with the live vehicle tracking.
+* New Library or Framework: to handle the mapping on the home page, we incorporated Leaflet into our app. We also used an MQTT protocol and Digitransit to handle the live vehicle tracking.
 * Internal REST API:
   * GET - `/admin` : Get all reports
   * GET - `/adminVehicleResults` : View average vehicle inspector count
@@ -26,6 +28,8 @@
   * DELETE - `/adminUnban/:id` : Unban a banned user
 * External REST API: we use an external API through the MQTT protocol to track the live tracking of vehicles.
 
+### Project Architecture
+![Project architecture](https://github.com/cse264/finalproject-fullstack-ThomasChakif/blob/main/img/architecture.png)
 
 ### Installation and Running the Project
 
